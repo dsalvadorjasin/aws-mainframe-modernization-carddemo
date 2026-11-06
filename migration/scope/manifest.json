@@ -17437,7 +17437,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "conditional-on-rescoping"
         },
         "source": "app/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl",
         "type": "navigation",
@@ -17489,7 +17490,8 @@
               "text": "                            XCTL PROGRAM(CDEMO-TO-PROGRAM)"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "conditional-on-rescoping"
         },
         "source": "app/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl",
         "type": "navigation",
@@ -17784,7 +17786,8 @@
               "text": " DEFINE TRANSACTION(CM00) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "conditional-on-rescoping"
         },
         "source": "app/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl",
         "type": "navigation",
@@ -17831,7 +17834,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "conditional-on-rescoping"
         },
         "source": "app/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl",
         "type": "navigation",
@@ -17878,7 +17882,8 @@
               "text": "           EXEC CICS LINK"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "conditional-on-rescoping"
         },
         "source": "app/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl",
         "type": "navigation",
@@ -18113,7 +18118,8 @@
               "text": "             10 CDEMO-TO-PROGRAM              PIC X(08)."
             }
           ],
-          "reason": "INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "conditional-on-rescoping"
         },
         "source": "app/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl",
         "type": "navigation",
@@ -18568,7 +18574,8 @@
               "text": " DEFINE TRANSACTION(CA00) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "conditional-on-rescoping"
         },
         "source": "app/app-transaction-type-db2/cbl/COTRTLIC.cbl",
         "type": "navigation",
@@ -18615,7 +18622,8 @@
               "text": "064800        EXEC CICS XCTL"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "conditional-on-rescoping"
         },
         "source": "app/app-transaction-type-db2/cbl/COTRTLIC.cbl",
         "type": "navigation",
@@ -18662,7 +18670,8 @@
               "text": "091000     EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "conditional-on-rescoping"
         },
         "source": "app/app-transaction-type-db2/cbl/COTRTLIC.cbl",
         "type": "navigation",
@@ -19157,7 +19166,8 @@
               "text": " DEFINE TRANSACTION(CA00) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "conditional-on-rescoping"
         },
         "source": "app/app-transaction-type-db2/cbl/COTRTUPC.cbl",
         "type": "navigation",
@@ -19209,7 +19219,8 @@
               "text": "056700     EXEC CICS RETURN                                             05670000"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "conditional-on-rescoping"
         },
         "source": "app/app-transaction-type-db2/cbl/COTRTUPC.cbl",
         "type": "navigation",
@@ -19548,7 +19559,8 @@
               "text": " DEFINE TRANSACTION(CM00) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/COACTUPC.cbl",
         "type": "navigation",
@@ -19600,7 +19612,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COACTUPC.cbl",
         "type": "navigation",
@@ -19939,7 +19952,8 @@
               "text": " DEFINE TRANSACTION(CM00) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/COACTVWC.cbl",
         "type": "navigation",
@@ -19991,7 +20005,8 @@
               "text": "           EXEC CICS RETURN                                                     "
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COACTVWC.cbl",
         "type": "navigation",
@@ -20038,7 +20053,8 @@
               "text": "           EXEC CICS RETURN                                                     "
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COADM01C.cbl",
         "type": "navigation",
@@ -20435,7 +20451,8 @@
               "text": "                       XCTL PROGRAM(CDEMO-ADMIN-OPT-PGMNAME(WS-OPTION))         "
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COADM01C.cbl",
         "type": "navigation",
@@ -21112,7 +21129,8 @@
               "text": " DEFINE TRANSACTION(CU03) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/COADM01C.cbl",
         "type": "navigation",
@@ -21159,7 +21177,8 @@
               "text": "           EXEC CICS RETURN                                                     "
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COADM01C.cbl",
         "type": "navigation",
@@ -21206,7 +21225,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COBIL00C.cbl",
         "type": "navigation",
@@ -21545,7 +21565,8 @@
               "text": " DEFINE TRANSACTION(CM00) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/COBIL00C.cbl",
         "type": "navigation",
@@ -21597,7 +21618,8 @@
               "text": "              EXEC CICS XCTL                                                    "
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COCRDLIC.cbl",
         "type": "navigation",
@@ -21654,7 +21676,8 @@
               "text": "                   EXEC CICS XCTL                                               "
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COCRDLIC.cbl",
         "type": "navigation",
@@ -21711,7 +21734,8 @@
               "text": "                   EXEC CICS XCTL                                               "
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COCRDLIC.cbl",
         "type": "navigation",
@@ -21763,7 +21787,8 @@
               "text": "           EXEC CICS RETURN                                                     "
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COCRDLIC.cbl",
         "type": "navigation",
@@ -22223,7 +22248,8 @@
               "text": " DEFINE TRANSACTION(CM00) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/COCRDSLC.cbl",
         "type": "navigation",
@@ -22275,7 +22301,8 @@
               "text": "           EXEC CICS RETURN                                                     "
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COCRDSLC.cbl",
         "type": "navigation",
@@ -22735,7 +22762,8 @@
               "text": " DEFINE TRANSACTION(CM00) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/COCRDUPC.cbl",
         "type": "navigation",
@@ -22787,7 +22815,8 @@
               "text": "           EXEC CICS RETURN                                                     "
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COCRDUPC.cbl",
         "type": "navigation",
@@ -22836,7 +22865,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COMEN01C.cbl",
         "type": "navigation",
@@ -23540,7 +23570,8 @@
               "text": "                      EXEC CICS XCTL"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COMEN01C.cbl",
         "type": "navigation",
@@ -24244,7 +24275,8 @@
               "text": "                         XCTL PROGRAM(CDEMO-MENU-OPT-PGMNAME(WS-OPTION))"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COMEN01C.cbl",
         "type": "navigation",
@@ -25309,7 +25341,8 @@
               "text": " DEFINE TRANSACTION(CT02) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/COMEN01C.cbl",
         "type": "navigation",
@@ -25356,7 +25389,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/CORPT00C.cbl",
         "type": "navigation",
@@ -25524,7 +25558,8 @@
               "text": " DEFINE TRANSACTION(CR00) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/CORPT00C.cbl",
         "type": "navigation",
@@ -25571,7 +25606,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/CORPT00C.cbl",
         "type": "navigation",
@@ -25618,7 +25654,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COSGN00C.cbl",
         "type": "navigation",
@@ -25703,7 +25740,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COTRN00C.cbl",
         "type": "navigation",
@@ -25750,7 +25788,8 @@
               "text": "                            XCTL PROGRAM(CDEMO-TO-PROGRAM)"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COTRN00C.cbl",
         "type": "navigation",
@@ -26060,7 +26099,8 @@
               "text": " DEFINE TRANSACTION(CT01) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/COTRN00C.cbl",
         "type": "navigation",
@@ -26107,7 +26147,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COTRN01C.cbl",
         "type": "navigation",
@@ -26577,7 +26618,8 @@
               "text": " DEFINE TRANSACTION(CT01) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/COTRN01C.cbl",
         "type": "navigation",
@@ -26624,7 +26666,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COTRN02C.cbl",
         "type": "navigation",
@@ -26963,7 +27006,8 @@
               "text": " DEFINE TRANSACTION(CT02) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/COTRN02C.cbl",
         "type": "navigation",
@@ -27010,7 +27054,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COTRN02C.cbl",
         "type": "navigation",
@@ -27057,7 +27102,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COUSR00C.cbl",
         "type": "navigation",
@@ -27104,7 +27150,8 @@
               "text": "                            XCTL PROGRAM(CDEMO-TO-PROGRAM)"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COUSR00C.cbl",
         "type": "navigation",
@@ -27151,7 +27198,8 @@
               "text": "                            XCTL PROGRAM(CDEMO-TO-PROGRAM)"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COUSR00C.cbl",
         "type": "navigation",
@@ -27346,7 +27394,8 @@
               "text": " DEFINE TRANSACTION(CU00) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/COUSR00C.cbl",
         "type": "navigation",
@@ -27393,7 +27442,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COUSR01C.cbl",
         "type": "navigation",
@@ -27556,7 +27606,8 @@
               "text": " DEFINE TRANSACTION(CU01) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/COUSR01C.cbl",
         "type": "navigation",
@@ -27603,7 +27654,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COUSR02C.cbl",
         "type": "navigation",
@@ -28079,7 +28131,8 @@
               "text": " DEFINE TRANSACTION(CU02) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/COUSR02C.cbl",
         "type": "navigation",
@@ -28126,7 +28179,8 @@
               "text": "           EXEC CICS RETURN"
             }
           ],
-          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted"
+          "reason": "finite literal-proven source upper bound; branch feasibility is not asserted",
+          "scope_class": "core"
         },
         "source": "app/cbl/COUSR03C.cbl",
         "type": "navigation",
@@ -28602,7 +28656,8 @@
               "text": " DEFINE TRANSACTION(CU03) GROUP(CARDDEMO)"
             }
           ],
-          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use"
+          "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
+          "scope_class": "core"
         },
         "source": "app/cbl/COUSR03C.cbl",
         "type": "navigation",
@@ -42773,31 +42828,58 @@
   },
   "decisions_needed": [
     {
+      "blocking_for": [
+        "s2.1/UNT-4",
+        "s5.1-s5.4/UNT-14..UNT-17"
+      ],
       "id": "scheduler",
-      "impact": "Choose actual scheduler and approve missing-member reconciliation; do not implement absent jobs.",
+      "impact": "Choose actual scheduler and approve missing-member reconciliation for orchestration architecture and batch ordering; do not implement absent jobs.",
       "owner": "manager/human-decision"
     },
     {
+      "blocking_for": [
+        "s2.1/UNT-4",
+        "s4.1-s4.4/UNT-10..UNT-13"
+      ],
       "id": "security",
-      "impact": "Approve Spring identity/RBAC replacement and privileged admin journeys.",
+      "impact": "Approve Spring identity/RBAC replacement in target architecture and privileged online journeys.",
       "owner": "manager/human-decision"
     },
     {
+      "blocking_for": [
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17"
+      ],
       "id": "dataset-contracts",
-      "impact": "Approve PostgreSQL keys, decimal/date encoding and restart/idempotency contracts.",
+      "impact": "Approve PostgreSQL keys for schema, decimal/date encoding for codecs and restart/idempotency contracts for batch processing.",
       "owner": "manager/human-decision"
     },
     {
+      "blocking_for": [
+        "s2.1/UNT-4",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s5.1-s5.4/UNT-14..UNT-17"
+      ],
       "id": "report-delivery",
-      "impact": "Choose replacement for TDQ/internal-reader, FTP and TXT2PDF; preserve report acceptance fixtures.",
+      "impact": "Choose replacement for TDQ/internal-reader, FTP and TXT2PDF in architecture and online/batch reporting; preserve golden report fixtures.",
       "owner": "manager/human-decision"
     },
     {
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s2.1/UNT-4"
+      ],
       "id": "scope-freeze",
-      "impact": "Approve proposed module ownership and disposition overlay before migration.",
+      "impact": "Approve proposed module ownership and boundary before capture protocol and target architecture.",
       "owner": "manager/human-decision"
     },
     {
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s2.1/UNT-4"
+      ],
       "decision": "Confirm source availability or approve exclusion of developer transaction CDV1/COCRDSEC; it is not part of approved user journeys. No exclusion is approved by this register.",
       "id": "csd-cdv1-cocrdsec",
       "impact": "No repository implementation exists for this CSD developer transaction; do not invent behavior or expand approved user journeys.",
@@ -68465,8 +68547,9 @@
   "external_dependencies": [
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -68475,7 +68558,7 @@
           "text": "//MAP      EXEC PGM=ASMA90,PARM='SYSPARM(MAP),DECK,NOLOAD'                      "
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "ASMA90",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for ASMA90",
       "owner": "operator",
@@ -68483,8 +68566,10 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s2.1/UNT-4",
+        "s1.3/UNT-3",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -68498,17 +68583,14 @@
           "text": "\t\t<JOB JOBISN=\"1\" APPLICATION=\"CARD-DEMO\" SUB_APPLICATION=\"CTRLM\" JOBNAME=\"CLOSEFIL\" MEMNAME=\"CLOSEFIL\" DESCRIPTION=\"DAILY CLOSEFIL\" CREATED_BY=\"XUEMINGH\" RUN_AS=\"xuemingh\" CRITICAL=\"0\" TASKTYPE=\"Job\" CYCLIC=\"0\" CONFIRM=\"0\" RETRO=\"0\" MAXWAIT=\"7\" MAXRERUN=\"5\" AUTOARCH=\"1\" MAXDAYS=\"0\" MAXRUNS=\"0\" TIMETO=\"23:00\" DAYS=\"ALL\" JAN=\"1\" FEB=\"1\" MAR=\"1\" APR=\"1\" MAY=\"1\" JUN=\"1\" JUL=\"1\" AUG=\"1\" SEP=\"1\" OCT=\"1\" NOV=\"1\" DEC=\"1\" DAYS_AND_OR=\"O\" SYSDB=\"1\" IND_CYCLIC=\"S\" CREATION_USER=\"emuser\" CREATION_DATE=\"20250909\" CREATION_TIME=\"120700\" CHANGE_USERID=\"xuemingh\" CHANGE_DATE=\"20250909\" CHANGE_TIME=\"120700\" JOB_VERSION=\"01.00\" RULE_BASED_CALENDAR_RELATIONSHIP=\"O\" APPL_TYPE=\"OS\" MULTY_AGENT=\"N\" USE_INSTREAM_JCL=\"N\" VERSION_OPCODE=\"N\" IS_CURRENT_VERSION=\"Y\" VERSION_SERIAL=\"1\" VERSION_HOST=\"MY-HOST\" CYCLIC_TOLERANCE=\"0\" CYCLIC_TYPE=\"C\" PARENT_FOLDER=\"DAILY-TransactionBackup\" END_FOLDER=\"N\">"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Host scheduling, submission and utility contracts constrain target architecture, golden batch outputs and batch orchestration; report submission also constrains online journeys. Qualification consumes those goldens.",
       "name": "CA7/Control-M",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CA7/Control-M",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 222,
@@ -68526,16 +68608,17 @@
           "text": "            CALL 'CBLTDLI'            USING  FUNC-GN                    02070034"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "CBLTDLI",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CBLTDLI",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CBLTDLI",
       "owner": "operator",
       "status": "verified"
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -68554,7 +68637,7 @@
           "text": "           CALL 'CEE3ABD' USING ABCODE, TIMING.                                 "
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "CEE3ABD",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CEE3ABD",
       "owner": "operator",
@@ -68562,8 +68645,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -68572,7 +68656,7 @@
           "text": "      *****       CALL TO CEEDAYS                                *******        "
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "CEEDAYS",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CEEDAYS",
       "owner": "operator",
@@ -68580,8 +68664,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -68600,17 +68685,14 @@
           "text": "           EXEC CICS RETURN                                                     "
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "CICS TS",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CICS TS",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 170,
@@ -68628,17 +68710,14 @@
           "text": "007900 COPY CMQGMOV.                                                    00710012"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "CMQGMOV",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CMQGMOV",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CMQGMOV",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 152,
@@ -68656,17 +68735,14 @@
           "text": "008700 COPY CMQMDV.                                                     00790012"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "CMQMDV",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CMQMDV",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CMQMDV",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 149,
@@ -68684,17 +68760,14 @@
           "text": "009100 COPY CMQODV.                                                     00830012"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "CMQODV",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CMQODV",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CMQODV",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 167,
@@ -68712,17 +68785,14 @@
           "text": "008300 COPY CMQPMOV.                                                    00750012"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "CMQPMOV",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CMQPMOV",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CMQPMOV",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 164,
@@ -68740,17 +68810,14 @@
           "text": "009800 COPY CMQTML.                                                     00900012"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "CMQTML",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CMQTML",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CMQTML",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 161,
@@ -68768,16 +68835,17 @@
           "text": "009500 COPY CMQV.                                                       00870012"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "CMQV",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CMQV",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for CMQV",
       "owner": "operator",
       "status": "verified"
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -68796,7 +68864,7 @@
           "text": "042600 COPY DFHAID."
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "DFHAID",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for DFHAID",
       "owner": "operator",
@@ -68804,8 +68872,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -68824,7 +68893,7 @@
           "text": "      *COPY DFHBMSCA.                                                           "
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "DFHBMSCA",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for DFHBMSCA",
       "owner": "operator",
@@ -68832,8 +68901,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -68842,7 +68912,7 @@
           "text": "//STEP1   EXEC PGM=DFHCSDUP,REGION=0M,"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "DFHCSDUP",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for DFHCSDUP",
       "owner": "operator",
@@ -68850,8 +68920,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -68865,7 +68936,7 @@
           "text": "//TRN    EXEC  PGM=DFHECP1$,PARM='NOSEQ',"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "DFHECP1",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for DFHECP1",
       "owner": "operator",
@@ -68873,8 +68944,10 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s2.1/UNT-4",
+        "s1.3/UNT-3",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -68893,17 +68966,14 @@
           "text": "//STEP10R  EXEC PGM=SORT                                                        "
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Host scheduling, submission and utility contracts constrain target architecture, golden batch outputs and batch orchestration; report submission also constrains online journeys. Qualification consumes those goldens.",
       "name": "DFSORT/SORT",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for DFSORT/SORT",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 24,
@@ -68921,17 +68991,14 @@
           "text": "//STEP01  EXEC PGM=DFSRRC00,"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "DFSRRC00",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for DFSRRC00",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for DFSRRC00",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 46,
@@ -68939,16 +69006,17 @@
           "text": "//PRECMP  EXEC PGM=DSNHPC,"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "DSNHPC",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for DSNHPC",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for DSNHPC",
       "owner": "operator",
       "status": "verified"
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -68967,7 +69035,7 @@
           "text": "               LANG=COBOL,                                             -        "
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "Enterprise COBOL compiler/options",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for Enterprise COBOL compiler/options",
       "owner": "operator",
@@ -68975,8 +69043,10 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s2.1/UNT-4",
+        "s1.3/UNT-3",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -68985,7 +69055,7 @@
           "text": "//STEP1 EXEC PGM=FTP,REGION=2048K"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Host scheduling, submission and utility contracts constrain target architecture, golden batch outputs and batch orchestration; report submission also constrains online journeys. Qualification consumes those goldens.",
       "name": "FTP",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for FTP",
       "owner": "operator",
@@ -68993,8 +69063,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69013,7 +69084,7 @@
           "text": "//LKED     EXEC PGM=HEWL,PARM='LIST,LET,XREF'                                   "
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "HEWL",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for HEWL",
       "owner": "operator",
@@ -69021,8 +69092,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69036,7 +69108,7 @@
           "text": "//MAP      EXEC PGM=ASMA90,PARM='SYSPARM(MAP),DECK,NOLOAD'                      "
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "HLASM",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for HLASM",
       "owner": "operator",
@@ -69044,8 +69116,10 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s2.1/UNT-4",
+        "s1.3/UNT-3",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69064,7 +69138,7 @@
           "text": "//STEP01   EXEC PGM=IDCAMS"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Host scheduling, submission and utility contracts constrain target architecture, golden batch outputs and batch orchestration; report submission also constrains online journeys. Qualification consumes those goldens.",
       "name": "IDCAMS",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for IDCAMS",
       "owner": "operator",
@@ -69072,8 +69146,10 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s2.1/UNT-4",
+        "s1.3/UNT-3",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69092,7 +69168,7 @@
           "text": "//STEP01  EXEC PGM=IEBGENER"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Host scheduling, submission and utility contracts constrain target architecture, golden batch outputs and batch orchestration; report submission also constrains online journeys. Qualification consumes those goldens.",
       "name": "IEBGENER",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for IEBGENER",
       "owner": "operator",
@@ -69100,8 +69176,10 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s2.1/UNT-4",
+        "s1.3/UNT-3",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69120,7 +69198,7 @@
           "text": "//LDTTYPE  EXEC PGM=IEFBR14,COND=(0,NE)                                 00500019"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Host scheduling, submission and utility contracts constrain target architecture, golden batch outputs and batch orchestration; report submission also constrains online journeys. Qualification consumes those goldens.",
       "name": "IEFBR14",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for IEFBR14",
       "owner": "operator",
@@ -69128,8 +69206,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69138,7 +69217,7 @@
           "text": "//LKED   EXEC PGM=IEWL,REGION=0M,PARM='LIST,XREF',COND=(4,LT)"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "IEWL",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for IEWL",
       "owner": "operator",
@@ -69146,8 +69225,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69166,7 +69246,7 @@
           "text": "//COMPILE EXEC PGM=IGYCRCTL,REGION=0M,"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "IGYCRCTL",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for IGYCRCTL",
       "owner": "operator",
@@ -69174,8 +69254,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69194,7 +69275,7 @@
           "text": "//STEP40   EXEC PGM=IKJEFT01,COND=(0,NE)"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "IKJEFT01",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for IKJEFT01",
       "owner": "operator",
@@ -69202,8 +69283,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69212,7 +69294,7 @@
           "text": "//TXT2PDF  EXEC PGM=IKJEFT1B,DYNAMNBR=50,"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "IKJEFT1B",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for IKJEFT1B",
       "owner": "operator",
@@ -69220,8 +69302,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69230,17 +69313,14 @@
           "text": "      *****       CALL TO CEEDAYS                                *******        "
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "LE date services",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for LE date services",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 956,
@@ -69258,17 +69338,14 @@
           "text": "047100     CALL 'MQCLOSE' USING MQ-HCONN                                04610012"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "MQCLOSE",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for MQCLOSE",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for MQCLOSE",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 400,
@@ -69286,17 +69363,14 @@
           "text": "032200     CALL 'MQGET'  USING MQ-HCONN                                 03010012"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "MQGET",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for MQGET",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for MQGET",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 262,
@@ -69314,17 +69388,14 @@
           "text": "019200     CALL 'MQOPEN' USING QMGR-HANDLE-CONN                         01820012"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "MQOPEN",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for MQOPEN",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for MQOPEN",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 758,
@@ -69342,17 +69413,14 @@
           "text": "038900     CALL 'MQPUT'  USING MQ-HCONN                                 03830012"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "MQPUT",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for MQPUT",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for MQPUT",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 758,
@@ -69360,16 +69428,17 @@
           "text": "           CALL 'MQPUT1' USING W02-HCONN-REPLY                                  "
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "MQPUT1",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for MQPUT1",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for MQPUT1",
       "owner": "operator",
       "status": "verified"
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69388,7 +69457,7 @@
           "text": "MVSWAIT  START 0"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "MVSWAIT/COBDATFT/maclib",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for MVSWAIT/COBDATFT/maclib",
       "owner": "operator",
@@ -69396,8 +69465,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s2.1/UNT-4",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69416,7 +69486,7 @@
           "text": "//RACFCMDS JOB ACTINFO1,'RACF',CLASS=A,MSGCLASS=Y,"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Identity and authorization mapping constrain target architecture and privileged online journeys; qualification consumes authorization goldens.",
       "name": "RACF",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for RACF",
       "owner": "operator",
@@ -69424,8 +69494,10 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s2.1/UNT-4",
+        "s1.3/UNT-3",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69444,7 +69516,7 @@
           "text": "//CLCIFIL EXEC PGM=SDSF                                                         "
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Host scheduling, submission and utility contracts constrain target architecture, golden batch outputs and batch orchestration; report submission also constrains online journeys. Qualification consumes those goldens.",
       "name": "SDSF",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for SDSF",
       "owner": "operator",
@@ -69452,8 +69524,10 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s2.1/UNT-4",
+        "s1.3/UNT-3",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69472,17 +69546,14 @@
           "text": "//STEP10R  EXEC PGM=SORT                                                        "
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Host scheduling, submission and utility contracts constrain target architecture, golden batch outputs and batch orchestration; report submission also constrains online journeys. Qualification consumes those goldens.",
       "name": "SORT",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for SORT",
       "owner": "operator",
       "status": "verified"
     },
     {
-      "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
-      ],
+      "blocking_for": [],
       "evidence": [
         {
           "line": 66,
@@ -69500,16 +69571,19 @@
           "text": "033100      EXEC SQL INCLUDE SQLCA    END-EXEC"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.",
       "name": "SQLCA",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for SQLCA",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for SQLCA",
       "owner": "operator",
       "status": "verified"
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s2.1/UNT-4",
+        "s1.3/UNT-3",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18",
+        "s4.1-s4.4/UNT-10..UNT-13"
       ],
       "evidence": [
         {
@@ -69528,7 +69602,7 @@
           "text": "           EXEC CICS WRITEQ TD"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Host scheduling, submission and utility contracts constrain target architecture, golden batch outputs and batch orchestration; report submission also constrains online journeys. Qualification consumes those goldens.",
       "name": "TDQ",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for TDQ",
       "owner": "operator",
@@ -69536,8 +69610,10 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s2.1/UNT-4",
+        "s1.3/UNT-3",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69556,7 +69632,7 @@
           "text": "           JOB=TXT2PDF1 SCHID=030      QTM=0100 LEADTM=0000 SUBMTM=0000"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Host scheduling, submission and utility contracts constrain target architecture, golden batch outputs and batch orchestration; report submission also constrains online journeys. Qualification consumes those goldens.",
       "name": "TXT2PDF",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for TXT2PDF",
       "owner": "operator",
@@ -69564,11 +69640,14 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s6.1/UNT-18"
       ],
       "evidence": [],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Actual CCSIDs determine capture transfer mode, raw golden bytes, schema field contracts and EBCDIC/packed/zoned codecs; qualification validates decoded equivalence.",
       "name": "code page CP037",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for code page CP037",
       "owner": "operator",
@@ -69576,8 +69655,11 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s2.1/UNT-4",
+        "s1.3/UNT-3",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18",
+        "s4.1-s4.4/UNT-10..UNT-13"
       ],
       "evidence": [
         {
@@ -69596,7 +69678,7 @@
           "text": "//INTRDRJ2 JOB (COBOL),'KSSOMAS',CLASS=A,MSGCLASS=H,MSGLEVEL=(1,1),"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Host scheduling, submission and utility contracts constrain target architecture, golden batch outputs and batch orchestration; report submission also constrains online journeys. Qualification consumes those goldens.",
       "name": "internal reader",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for internal reader",
       "owner": "operator",
@@ -69604,8 +69686,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69624,7 +69707,7 @@
           "text": "![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)"
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "third-party licenses",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for third-party licenses",
       "owner": "manager/human-decision",
@@ -69632,8 +69715,9 @@
     },
     {
       "blocking_for": [
-        "runtime-equivalence",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4",
+        "s6.1/UNT-18"
       ],
       "evidence": [
         {
@@ -69652,7 +69736,7 @@
           "text": "// REGION=0K,TIME=30,NOTIFY=&SYSUID                                             "
         }
       ],
-      "impact_on_migration": "Source dependency only; installed product/version, configuration and replacement equivalence are unverified.",
+      "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
       "name": "z/OS",
       "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for z/OS",
       "owner": "operator",
@@ -69662,341 +69746,767 @@
   "operator_evidence_requests": [
     {
       "ask": "Capture z/OS, CICS TS, compiler and HLASM versions; compiler/link-edit options; LE configuration; actual dataset CCSID/code page and transfer mode; RACF profiles (redacted); active scheduler product, calendars, dependencies and restart rules.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s2.1/UNT-4",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "runtime-baseline",
-      "impact": "Blocks executable equivalence and cutover, not inventory.",
+      "impact": "Capture protocol and golden corpus need a reproducible baseline; identity/scheduler settings inform architecture, CCSIDs inform schema/codecs, and online/batch qualification consumes these goldens. Does not block inventory.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COACTUPC, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COACTUPC.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COACTVWC, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COACTVWC.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COADM01C, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COADM01C.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COBIL00C, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COBIL00C.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COCRDLIC, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COCRDLIC.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COCRDSLC, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COCRDSLC.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COCRDUPC, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COCRDUPC.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COMEN01C, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COMEN01C.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for CORPT00C, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/CORPT00C.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COSGN00C, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COSGN00C.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COTRN00C, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COTRN00C.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COTRN01C, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COTRN01C.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COTRN02C, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COTRN02C.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COUSR00C, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COUSR00C.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COUSR01C, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COUSR01C.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COUSR02C, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COUSR02C.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Capture every reachable screen journey for COUSR03C, including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
+      ],
       "id": "app/cbl/COUSR03C.cbl",
-      "impact": "Required acceptance fixtures; no mainframe access available to Devin.",
+      "impact": "Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.",
       "owner": "operator"
     },
     {
       "ask": "Run ACCTFILE in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/ACCTFILE.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run CARDFILE in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/CARDFILE.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run CBADMCDJ in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/CBADMCDJ.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run CBEXPORT in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/CBEXPORT.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run CBIMPORT in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/CBIMPORT.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run CLOSEFIL in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/CLOSEFIL.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run COMBTRAN in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/COMBTRAN.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run CREASTMT in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/CREASTMT.JCL",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run CUSTFILE in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/CUSTFILE.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run DALYREJS in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/DALYREJS.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run DEFCUST in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/DEFCUST.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run DEFGDGB in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/DEFGDGB.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run DEFGDGD in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/DEFGDGD.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run DISCGRP in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/DISCGRP.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run DUSRSECJ in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/DUSRSECJ.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run ESDSRRDS in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/ESDSRRDS.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run FTPJCLS in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/FTPJCL.JCL",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run INTCALC in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/INTCALC.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run INTRDRJ1 in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/INTRDRJ1.JCL",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run INTRDRJ2 in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/INTRDRJ2.JCL",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run OPENFIL in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/OPENFIL.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run POSTTRAN in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/POSTTRAN.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run PRTCATBL in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/PRTCATBL.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run READACCT in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/READACCT.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run READCARD in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/READCARD.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run READCUST in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/READCUST.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run READXREF in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/READXREF.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run REPTFILE in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/REPTFILE.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run TCATBALF in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/TCATBALF.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run TRANBKP in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/TRANBKP.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run TRANCATG in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/TRANCATG.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run TRANFILE in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/TRANFILE.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run TRANIDX in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/TRANIDX.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run TRANREPT in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/TRANREPT.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run TRANTYPE in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/TRANTYPE.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run TXT2PDF1 in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/TXT2PDF1.JCL",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run WAITSTEP in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/WAITSTEP.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     },
     {
       "ask": "Run XREFFILE in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.",
+      "blocking_for": [
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s3.1/UNT-7",
+        "s3.2/UNT-8",
+        "s5.1-s5.4/UNT-14..UNT-17",
+        "s6.1/UNT-18"
+      ],
       "id": "app/jcl/XREFFILE.jcl",
-      "impact": "Required batch equivalence fixtures; destructive setup jobs require operator approval.",
+      "impact": "Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.",
       "owner": "operator"
     }
   ],
+  "plan_steps": {
+    "s1.2/UNT-2": "Operator capture protocol and initial captures",
+    "s1.3/UNT-3": "Golden corpus",
+    "s2.1/UNT-4": "Target architecture",
+    "s3.1/UNT-7": "PostgreSQL data schema",
+    "s3.2/UNT-8": "Legacy data codecs (EBCDIC/packed/zoned)",
+    "s4.1-s4.4/UNT-10..UNT-13": "Online journeys (range; individual step not inferred)",
+    "s5.1-s5.4/UNT-14..UNT-17": "Batch implementation (range; individual step not inferred)",
+    "s6.1/UNT-18": "Qualification consumes golden corpus"
+  },
   "schema_version": "1.0.0",
   "source_gaps": [
     {
@@ -70015,8 +70525,8 @@
         }
       ],
       "blocking_for": [
-        "developer-transaction-scope-approval",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s2.1/UNT-4"
       ],
       "decision": "Confirm source availability or approve exclusion of developer transaction CDV1/COCRDSEC; it is not part of approved user journeys. No exclusion is approved by this register.",
       "evidence": [
@@ -70051,12 +70561,8 @@
       "transaction": "CDV1"
     },
     {
-      "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
-      ],
-      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "blocking_for": [],
+      "decision": "Only if the extension is rescoped: Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
         {
           "line": 191,
@@ -70110,21 +70616,19 @@
         }
       ],
       "id": "navigation:app/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl:675:XCTL",
-      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "impact": "Inventory finding only; no approved-core step is blocked unless the excluded extension is rescoped.",
       "kind": "unresolved-dynamic-target",
-      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "conditional-on-rescoping",
+      "source": "app/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl"
     },
     {
-      "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
-      ],
-      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "blocking_for": [],
+      "decision": "Only if the extension is rescoped: Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
         {
           "line": 191,
@@ -70168,21 +70672,19 @@
         }
       ],
       "id": "navigation:app/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl:368:XCTL",
-      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "impact": "Inventory finding only; no approved-core step is blocked unless the excluded extension is rescoped.",
       "kind": "unresolved-dynamic-target",
-      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "conditional-on-rescoping",
+      "source": "app/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl"
     },
     {
-      "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
-      ],
-      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "blocking_for": [],
+      "decision": "Only if the extension is rescoped: Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
         {
           "line": 516,
@@ -70246,21 +70748,19 @@
         }
       ],
       "id": "navigation:app/app-transaction-type-db2/cbl/COTRTLIC.cbl:620:XCTL",
-      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "impact": "Inventory finding only; no approved-core step is blocked unless the excluded extension is rescoped.",
       "kind": "unresolved-dynamic-target",
-      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "conditional-on-rescoping",
+      "source": "app/app-transaction-type-db2/cbl/COTRTLIC.cbl"
     },
     {
-      "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
-      ],
-      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "blocking_for": [],
+      "decision": "Only if the extension is rescoped: Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
         {
           "line": 516,
@@ -70349,19 +70849,22 @@
         }
       ],
       "id": "navigation:app/app-transaction-type-db2/cbl/COTRTUPC.cbl:457:XCTL",
-      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "impact": "Inventory finding only; no approved-core step is blocked unless the excluded extension is rescoped.",
       "kind": "unresolved-dynamic-target",
-      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "operator_evidence_needed": "Conditional on rescoping the excluded extension only: Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "conditional-on-rescoping",
+      "source": "app/app-transaction-type-db2/cbl/COTRTUPC.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -70423,13 +70926,16 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/COACTUPC.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -70491,13 +70997,16 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/COACTVWC.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -70654,13 +71163,16 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/COADM01C.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -70717,13 +71229,16 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/COBIL00C.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -70810,13 +71325,16 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/COCRDSLC.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -70903,13 +71421,16 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/COCRDUPC.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -71141,13 +71662,16 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "INITIALIZE may clear CDEMO-FROM-PROGRAM before a later assignment; INITIALIZE may clear CDEMO-TO-PROGRAM before a later assignment; externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/COMEN01C.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -71189,13 +71713,16 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/CORPT00C.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -71262,13 +71789,16 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/COTRN00C.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -71335,13 +71865,16 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/COTRN01C.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -71398,13 +71931,16 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/COTRN02C.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -71446,13 +71982,16 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/COUSR00C.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -71494,13 +72033,16 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/COUSR01C.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -71567,13 +72109,16 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/COUSR02C.cbl"
     },
     {
       "blocking_for": [
-        "UNT-2: golden capture",
-        "UNT-7: online journeys",
-        "cutover-approval"
+        "s1.2/UNT-2",
+        "s1.3/UNT-3",
+        "s4.1-s4.4/UNT-10..UNT-13",
+        "s6.1/UNT-18"
       ],
       "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
       "evidence": [
@@ -71640,7 +72185,9 @@
       "owner": "operator",
       "proposed_disposition": "compatibility-adapter-pending-evidence",
       "reason": "externally initiated CICS COMMAREA can overwrite CDEMO-FROM-PROGRAM; caller set is not closed; externally initiated CICS COMMAREA can overwrite CDEMO-TO-PROGRAM; caller set is not closed; initial value is not proven before all control-flow paths to this use",
-      "resource": "CDEMO-TO-PROGRAM"
+      "resource": "CDEMO-TO-PROGRAM",
+      "scope_class": "core",
+      "source": "app/cbl/COUSR03C.cbl"
     }
   ],
   "source_sha": "59cc6c2fd7ebd7ef7925cad552a01a4b8b6e4d5e"

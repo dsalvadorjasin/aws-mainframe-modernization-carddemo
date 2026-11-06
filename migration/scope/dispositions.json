@@ -10,7 +10,7 @@
       "decision": "Confirm source availability or approve exclusion of developer transaction CDV1/COCRDSEC; it is not part of approved user journeys. No exclusion is approved by this register.",
       "impact": "No repository implementation exists for this CSD developer transaction; do not invent behavior or expand approved user journeys.",
       "operator_evidence_needed": "confirm whether a COCRDSEC load module exists on the host and whether CDV1 is used; supply source or approve exclusion",
-      "blocking_for": ["developer-transaction-scope-approval", "cutover-approval"],
+      "blocking_for": ["s1.2/UNT-2", "s2.1/UNT-4"],
       "evidence": [
         {"path": "app/csd/CARDDEMO.CSD", "line": 211, "text": " DEFINE PROGRAM(COCRDSEC) GROUP(CARDDEMO)"},
         {"path": "app/csd/CARDDEMO.CSD", "line": 388, "text": " DEFINE TRANSACTION(CDV1) GROUP(CARDDEMO)"},
@@ -26,7 +26,7 @@
     "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
     "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
     "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
-    "blocking_for": ["UNT-2: golden capture", "UNT-7: online journeys", "cutover-approval"]
+    "blocking_for": ["s1.2/UNT-2", "s1.3/UNT-3", "s4.1-s4.4/UNT-10..UNT-13", "s6.1/UNT-18"]
   },
   "rules": [
     {"pattern": "*", "disposition": "compatibility-adapter", "target_module": "platform", "owner": "migration-team", "reason": "Retain source/build/data provenance; replace host integration with an explicit adapter, not a Java business implementation in this ticket."},

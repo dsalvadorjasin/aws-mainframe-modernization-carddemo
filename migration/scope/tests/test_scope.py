@@ -121,6 +121,28 @@ class IntegrityTests(unittest.TestCase):
         edge['resolution']['candidates'][0]['target'] = 'ABSENT'
         self.assertFalse(dict(check_manifest.validate(m))['statically resolved candidate targets and citation chains resolve'])
 
+    def test_runtime_scope_and_conditional_blocker_tamper(self):
+        for tamper in ('edge-scope', 'gap-scope', 'empty-core-blockers', 'conditional-blockers'):
+            with self.subTest(tamper=tamper):
+                m = copy.deepcopy(self.manifest)
+                scope = 'conditional-on-rescoping' if tamper == 'conditional-blockers' else 'core'
+                gap = next(g for g in m['source_gaps'] if g.get('scope_class') == scope)
+                if tamper == 'edge-scope':
+                    edge = next(e for e in m['cics']['navigation'] if e['source'] == gap['source'] and e['line'] == int(gap['id'].split(':')[-2]))
+                    edge['resolution']['scope_class'] = 'conditional-on-rescoping'
+                elif tamper == 'gap-scope':
+                    gap['scope_class'] = 'conditional-on-rescoping'
+                elif tamper == 'empty-core-blockers':
+                    gap['blocking_for'] = []
+                else:
+                    gap['blocking_for'] = inventory.blocking('online')
+                self.assertFalse(dict(check_manifest.validate(m))['runtime scope matches source dispositions; excluded edges block no core steps'])
+
+    def test_unrecognized_plan_blocker(self):
+        m = copy.deepcopy(self.manifest)
+        m['operator_evidence_requests'][0]['blocking_for'] = ['unrecognized-step']
+        self.assertFalse(dict(check_manifest.validate(m))['blocking steps use approved stable plan IDs and ticket keys only'])
+
 
 class ResolverTests(unittest.TestCase):
     @staticmethod

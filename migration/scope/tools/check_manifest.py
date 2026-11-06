@@ -64,9 +64,9 @@ def validate(manifest, freshness=True):
         c['target'] in (all_transactions if e['operation'] == 'RETURN' else programs)
         for c in e['resolution']['candidates']) for e in dynamic if e['resolution']['classification'] == 'statically-resolved'))
     gaps = manifest.get('source_gaps', [])
-    required = ('id', 'resource', 'kind', 'proposed_disposition', 'owner', 'evidence', 'decision', 'impact', 'operator_evidence_needed', 'blocking_for')
+    required = ('id', 'resource', 'kind', 'proposed_disposition', 'owner', 'evidence', 'decision', 'impact', 'operator_evidence_needed')
     check('source gaps have unique IDs, ownership, evidence and pending decisions',
-          len({g.get('id') for g in gaps}) == len(gaps) and all(all(g.get(k) for k in required) for g in gaps))
+          len({g.get('id') for g in gaps}) == len(gaps) and all(all(g.get(k) for k in required) and isinstance(g.get('blocking_for'), list) for g in gaps))
     registered_csd = [g['resource'] for g in gaps if g.get('kind') == 'missing-source']
     check('unresolved CSD resources explicitly registered with evidence and decision',
           sorted(registered_csd) == sorted(source_gaps(manifest)) and
@@ -79,6 +79,35 @@ def validate(manifest, freshness=True):
     runtime_ids = {f"navigation:{e['source']}:{e['line']}:{e['operation']}" for e in runtime}
     check('only runtime-dependent edges have operator gaps with reasons and requests', set(runtime_gaps) == runtime_ids and
           all(g.get('reason') and g.get('evidence') and g.get('operator_evidence_needed') for g in runtime_gaps.values()))
+    dispositions = {e['path']: e['disposition'] for e in entries}
+    scoped = True
+    core_steps = set(inventory.blocking('protocol', 'goldens', 'online'))
+    for edge in runtime:
+        gap = runtime_gaps.get(f"navigation:{edge['source']}:{edge['line']}:{edge['operation']}", {})
+        expected_scope = 'conditional-on-rescoping' if dispositions.get(edge['source']) == 'excluded' else 'core'
+        scoped &= edge['resolution'].get('scope_class') == expected_scope and gap.get('scope_class') == expected_scope and gap.get('source') == edge['source']
+        if expected_scope == 'core':
+            scoped &= core_steps <= set(gap.get('blocking_for', []))
+        else:
+            scoped &= gap.get('blocking_for') == [] and gap.get('operator_evidence_needed', '').startswith('Conditional on rescoping')
+    check('runtime scope matches source dispositions; excluded edges block no core steps', scoped)
+    check('runtime scope counts core=15 conditional=4 (authorization=2 transaction-type=2)',
+          sum(e['source'].startswith('app/cbl/') and dispositions.get(e['source']) != 'excluded' for e in runtime) == 15 and
+          sum(e['source'].startswith('app/app-authorization-ims-db2-mq/') for e in runtime) == 2 and
+          sum(e['source'].startswith('app/app-transaction-type-db2/') for e in runtime) == 2 and len(runtime) == 19)
+    blocker_lists = []
+    def collect_blockers(value):
+        if isinstance(value, dict):
+            if 'blocking_for' in value:
+                blocker_lists.append(value['blocking_for'])
+            for item in value.values():
+                collect_blockers(item)
+        elif isinstance(value, list):
+            for item in value:
+                collect_blockers(item)
+    collect_blockers(manifest)
+    check('blocking steps use approved stable plan IDs and ticket keys only', manifest.get('plan_steps') == inventory.PLAN_STEPS and
+          all(isinstance(steps, list) and all(step in inventory.PLAN_STEPS for step in steps) for steps in blocker_lists))
     check('COCRDSEC whole-source absence searches reproduce exactly', all(g.get('absence_evidence') == inventory.absence_evidence()
           for g in gaps if g.get('resource') == 'COCRDSEC'))
     check('scheduler jobs have JCL members', not any(s['missing_members'] for s in manifest['batch']['scheduler_reconciliation']))
@@ -107,6 +136,8 @@ def main():
         print(('PASS' if ok else 'FAIL') + ' ' + name)
     print('REGISTERED SOURCE GAP pending decision: ' + ', '.join(source_gaps(manifest)))
     print('REGISTERED RUNTIME GAPS dynamic navigation targets: ' + str(sum(g['kind'] == 'unresolved-dynamic-target' for g in manifest['source_gaps'])))
+    print('RUNTIME NAVIGATION SCOPE core: ' + str(sum(g.get('kind') == 'unresolved-dynamic-target' and g.get('scope_class') == 'core' for g in manifest['source_gaps'])) +
+          '; conditional-on-rescoping: ' + str(sum(g.get('kind') == 'unresolved-dynamic-target' and g.get('scope_class') == 'conditional-on-rescoping' for g in manifest['source_gaps'])))
     print('STATICALLY RESOLVED dynamic navigation targets: ' + str(sum(e['binding'] == 'data-item' and e['resolution']['classification'] == 'statically-resolved' for e in manifest['cics']['navigation'])))
     return int(not all(ok for _, ok in results))
 

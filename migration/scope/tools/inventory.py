@@ -11,6 +11,20 @@ from navigation import Resolver
 ROOT = Path(__file__).resolve().parents[3]
 SCOPE = ROOT / 'migration/scope'
 SOURCE_SHA = '59cc6c2fd7ebd7ef7925cad552a01a4b8b6e4d5e'
+STEPS = {
+    'protocol': 's1.2/UNT-2', 'goldens': 's1.3/UNT-3',
+    'architecture': 's2.1/UNT-4', 'schema': 's3.1/UNT-7', 'codecs': 's3.2/UNT-8',
+    'online': 's4.1-s4.4/UNT-10..UNT-13', 'batch': 's5.1-s5.4/UNT-14..UNT-17',
+    'qualification': 's6.1/UNT-18'}
+PLAN_STEPS = dict(zip(STEPS.values(), (
+    'Operator capture protocol and initial captures', 'Golden corpus', 'Target architecture',
+    'PostgreSQL data schema', 'Legacy data codecs (EBCDIC/packed/zoned)',
+    'Online journeys (range; individual step not inferred)',
+    'Batch implementation (range; individual step not inferred)', 'Qualification consumes golden corpus')))
+
+
+def blocking(*steps):
+    return [STEPS[step] for step in steps]
 
 
 def git(*args):
@@ -189,6 +203,8 @@ def generate():
     for edge in navigation:
         if edge['binding'] == 'data-item':
             edge['resolution'] = resolver.resolve(edge)
+            source = next(e for e in entries if e['path'] == edge['source'])
+            edge['resolution']['scope_class'] = 'conditional-on-rescoping' if source['disposition'] == 'excluded' else 'core'
             for candidate in edge['resolution']['candidates']:
                 candidate['resolution'] = 'inventoried' if candidate['target'] in (transactions if edge['operation'] == 'RETURN' else programs) else 'unresolved-source-target'
     scheduled = []
@@ -212,8 +228,16 @@ def generate():
             gap['absence_evidence'] = absence_evidence()
     for edge in navigation:
         if edge['binding'] == 'data-item' and edge['resolution']['classification'] == 'runtime-dependent':
-            gaps.append(dict(dispositions['dynamic_navigation_policy'],
+            scope_class = edge['resolution']['scope_class']
+            policy = dict(dispositions['dynamic_navigation_policy'])
+            if scope_class == 'conditional-on-rescoping':
+                policy['blocking_for'] = []
+                policy['operator_evidence_needed'] = 'Conditional on rescoping the excluded extension only: ' + policy['operator_evidence_needed']
+                policy['impact'] = 'Inventory finding only; no approved-core step is blocked unless the excluded extension is rescoped.'
+                policy['decision'] = 'Only if the extension is rescoped: ' + policy['decision']
+            gaps.append(dict(policy,
                              id=f"navigation:{edge['source']}:{edge['line']}:{edge['operation']}",
+                             source=edge['source'], scope_class=scope_class,
                              resource=edge['value'], reason=edge['resolution']['reason'], evidence=edge['resolution']['evidence']))
     return {'schema_version': '1.0.0', 'source_sha': SOURCE_SHA, 'entries': entries,
             'cics': {'resources': csd, 'navigation': navigation, 'bms_definitions': bms, 'all_csd_resources': all_resources},
@@ -221,15 +245,16 @@ def generate():
                          'cics_file_mapping': [r for r in csd if r['type'] == 'file']},
             'batch': {'jobs': jobs, 'scheduler_reconciliation': scheduled},
             'external_dependencies': external,
+            'plan_steps': PLAN_STEPS,
             'source_gaps': sorted(gaps, key=lambda gap: gap['id']),
             'operator_evidence_requests': operator_requests(entries, jobs),
-            'decisions_needed': [{'id': k, 'owner': 'manager/human-decision', 'impact': v} for k, v in {
-                'scheduler': 'Choose actual scheduler and approve missing-member reconciliation; do not implement absent jobs.',
-                'security': 'Approve Spring identity/RBAC replacement and privileged admin journeys.',
-                'dataset-contracts': 'Approve PostgreSQL keys, decimal/date encoding and restart/idempotency contracts.',
-                'report-delivery': 'Choose replacement for TDQ/internal-reader, FTP and TXT2PDF; preserve report acceptance fixtures.',
-                'scope-freeze': 'Approve proposed module ownership and disposition overlay before migration.'}.items()] +
-                [{'id': gap['id'], 'owner': gap['owner'], 'impact': gap['impact'], 'decision': gap['decision']}
+            'decisions_needed': [{'id': k, 'owner': 'manager/human-decision', 'impact': v, 'blocking_for': steps} for k, (v, steps) in {
+                'scheduler': ('Choose actual scheduler and approve missing-member reconciliation for orchestration architecture and batch ordering; do not implement absent jobs.', blocking('architecture', 'batch')),
+                'security': ('Approve Spring identity/RBAC replacement in target architecture and privileged online journeys.', blocking('architecture', 'online')),
+                'dataset-contracts': ('Approve PostgreSQL keys for schema, decimal/date encoding for codecs and restart/idempotency contracts for batch processing.', blocking('schema', 'codecs', 'batch')),
+                'report-delivery': ('Choose replacement for TDQ/internal-reader, FTP and TXT2PDF in architecture and online/batch reporting; preserve golden report fixtures.', blocking('architecture', 'goldens', 'online', 'batch')),
+                'scope-freeze': ('Approve proposed module ownership and boundary before capture protocol and target architecture.', blocking('protocol', 'architecture'))}.items()] +
+                [{'id': gap['id'], 'owner': gap['owner'], 'impact': gap['impact'], 'decision': gap['decision'], 'blocking_for': gap['blocking_for']}
                  for gap in dispositions['source_gaps']]}
 
 
@@ -263,22 +288,38 @@ def external_dependencies(entries, contents):
                     break
             if len(evidence) >= 3:
                 break
+        steps = blocking('protocol', 'architecture', 'qualification')
+        impact = 'Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.'
+        conditional = name.startswith(('CMQ', 'MQ')) or name in {'SQLCA', 'CBLTDLI', 'DFSRRC00', 'DSNHPC'}
+        if name == 'code page CP037':
+            steps = blocking('protocol', 'goldens', 'schema', 'codecs', 'qualification')
+            impact = 'Actual CCSIDs determine capture transfer mode, raw golden bytes, schema field contracts and EBCDIC/packed/zoned codecs; qualification validates decoded equivalence.'
+        elif name == 'RACF':
+            steps = blocking('architecture', 'online', 'qualification')
+            impact = 'Identity and authorization mapping constrain target architecture and privileged online journeys; qualification consumes authorization goldens.'
+        elif name in {'CA7/Control-M', 'internal reader', 'TDQ', 'FTP', 'TXT2PDF', 'IDCAMS', 'DFSORT/SORT', 'SORT', 'IEBGENER', 'IEFBR14', 'SDSF'}:
+            steps = blocking('architecture', 'goldens', 'batch', 'qualification')
+            if name in {'internal reader', 'TDQ'}:
+                steps += blocking('online')
+            impact = 'Host scheduling, submission and utility contracts constrain target architecture, golden batch outputs and batch orchestration; report submission also constrains online journeys. Qualification consumes those goldens.'
+        if conditional:
+            steps, impact = [], 'Excluded-extension dependency; no approved-core blocker. Obtain evidence only if the extension is rescoped.'
         result.append({'name': name, 'status': 'verified' if evidence else ('hypothesis' if name == 'code page CP037' else 'unknown'),
                        'evidence': evidence, 'owner': 'operator' if name != 'third-party licenses' else 'manager/human-decision',
-                       'impact_on_migration': 'Source dependency only; installed product/version, configuration and replacement equivalence are unverified.',
-                       'blocking_for': ['runtime-equivalence', 'cutover-approval'],
-                       'operator_evidence_needed': 'Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for ' + name})
+                       'impact_on_migration': impact,
+                       'blocking_for': steps,
+                       'operator_evidence_needed': ('Conditional on rescoping the excluded extension only: ' if conditional else '') + 'Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for ' + name})
     return result
 
 
 def operator_requests(entries, jobs):
-    requests = [{'id': 'runtime-baseline', 'owner': 'operator', 'ask': 'Capture z/OS, CICS TS, compiler and HLASM versions; compiler/link-edit options; LE configuration; actual dataset CCSID/code page and transfer mode; RACF profiles (redacted); active scheduler product, calendars, dependencies and restart rules.', 'impact': 'Blocks executable equivalence and cutover, not inventory.'}]
+    requests = [{'id': 'runtime-baseline', 'owner': 'operator', 'ask': 'Capture z/OS, CICS TS, compiler and HLASM versions; compiler/link-edit options; LE configuration; actual dataset CCSID/code page and transfer mode; RACF profiles (redacted); active scheduler product, calendars, dependencies and restart rules.', 'impact': 'Capture protocol and golden corpus need a reproducible baseline; identity/scheduler settings inform architecture, CCSIDs inform schema/codecs, and online/batch qualification consumes these goldens. Does not block inventory.', 'blocking_for': blocking('protocol', 'goldens', 'architecture', 'schema', 'codecs', 'online', 'batch', 'qualification')}]
     for e in entries:
         if e['kind'] == 'cobol-online' and e['disposition'] != 'excluded':
-            requests.append({'id': e['path'], 'owner': 'operator', 'ask': 'Capture every reachable screen journey for ' + Path(e['path']).stem + ', including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.', 'impact': 'Required acceptance fixtures; no mainframe access available to Devin.'})
+            requests.append({'id': e['path'], 'owner': 'operator', 'ask': 'Capture every reachable screen journey for ' + Path(e['path']).stem + ', including navigation, validation/empty/error, admin authorization, COMMAREA and resulting record changes, with sanitized before/after data.', 'impact': 'Initial captures define the protocol and golden screen corpus; online implementation and qualification require those acceptance fixtures. No mainframe access available to Devin.', 'blocking_for': blocking('protocol', 'goldens', 'online', 'qualification')})
     for j in jobs:
         if j['path'].startswith('app/jcl/'):
-            requests.append({'id': j['path'], 'owner': 'operator', 'ask': 'Run ' + j['job'] + ' in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.', 'impact': 'Required batch equivalence fixtures; destructive setup jobs require operator approval.'})
+            requests.append({'id': j['path'], 'owner': 'operator', 'ask': 'Run ' + j['job'] + ' in isolated approved environment; supply expanded JCL/PROC, input/output record layouts and sanitized bytes, spool/SYSOUT, RC/abend, DD allocation, restart/empty/error captures and reconciliation totals.', 'impact': 'Capture protocol and golden batch corpus must preserve raw record contracts for schema/codecs and output/restart semantics for batch implementation; qualification consumes these fixtures. Destructive setup jobs require operator approval.', 'blocking_for': blocking('protocol', 'goldens', 'schema', 'codecs', 'batch', 'qualification')})
     return requests
 
 

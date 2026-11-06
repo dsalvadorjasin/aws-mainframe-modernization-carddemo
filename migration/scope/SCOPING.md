@@ -1,4 +1,4 @@
-# UNT-1 — source-grounded migration boundary
+# Source-grounded migration boundary
 
 Authoritative source: `59cc6c2fd7ebd7ef7925cad552a01a4b8b6e4d5e` (origin/main at scope creation).
 `manifest.json` schema `1.0.0` is a deterministic inventory of tracked `app/`,
@@ -33,7 +33,8 @@ unused declarations until such an evidence mechanism is explicitly implemented.
 
 Devin has **no mainframe access**. A human OPERATOR executes the original in an
 approved isolated environment and supplies captures. Inventory is not blocked by
-missing runtime evidence; equivalence and cutover are.
+missing runtime evidence; planned implementation and qualification need it.
+**Cutover is explicitly out of scope**, not a required step or deliverable.
 
 ## Verified from source
 
@@ -162,7 +163,8 @@ semantics; catalog definitions alone are not a relational design.
   owned by manager/human-decision. The operator must confirm whether a COCRDSEC
   load module exists on the host and whether CDV1 is used; supply source or approve
   exclusion. Do not invent behavior or substitute COCRDSLC. This remains a decision
-  needed and blocks developer-transaction scope approval and cutover approval.
+  needed to settle the capture-protocol boundary and target architecture; its
+  proposed exclusion and pending human decision are unchanged.
 * **Scheduler aliases:** CA7 explicitly lists CLOSEFIL as the member for both
   CLOSEFIL1 and CLOSEFIL2. Member resolution is verified from the listing; deployed
   scheduler overrides, activation and per-job parameters remain unverified.
@@ -209,6 +211,13 @@ unsupported producers also retain uncertainty rather than being assumed constant
 This is conservative lexical dataflow, not a COBOL compiler/control-flow proof or
 an assertion of host execution. Candidate provenance and detailed reasons/citations
 are in each edge's `resolution` object and the runtime gap register.
+Of these 19, **15 are core** (`app/cbl`) and **four are conditional on rescoping**:
+two in the excluded authorization extension and two in the excluded transaction-type
+extension. All remain inventory findings. The four extension operator requests are
+conditional only and have empty `blocking_for` lists: they block no approved-core
+step. Both edges and gap records carry `scope_class`, checked against source-file
+disposition. Static resolution is not runtime proof; core golden coverage remains
+required regardless of finite candidate sets.
 
 | Source edge (path:line) | Operation / data item | Classification | Literal-proven candidates (partial for runtime rows) |
 |---|---|---|---|
@@ -305,17 +314,33 @@ Verbatim registration lines from `app/csd/CARDDEMO.CSD` (211; 388–390):
 
 ### Minimal human/operator inputs still needed
 
+Stable plan references used throughout the manifest and requests:
+
+| Plan ID / ticket key | Function |
+|---|---|
+| s1.2/UNT-2 | Operator capture protocol and initial captures |
+| s1.3/UNT-3 | Golden corpus |
+| s2.1/UNT-4 | Target architecture |
+| s3.1/UNT-7 | PostgreSQL data schema |
+| s3.2/UNT-8 | Legacy data codecs (EBCDIC/packed/zoned) |
+| s4.1-s4.4/UNT-10..UNT-13 | Online journeys; range used rather than guessing an individual step |
+| s5.1-s5.4/UNT-14..UNT-17 | Batch; range used rather than guessing an individual step |
+| s6.1/UNT-18 | Qualification consumes the golden corpus |
+
 | Input / owner | Why source does not settle it | Dependent plan step and impact |
 |---|---|---|
-| COCRDSEC host load/source provenance and CDV1 usage; operator supplies, manager decides | Developer CSD entry has no source; exclusion is only proposed | Developer-transaction scope approval: supply source or approve exclusion; cutover-approval remains blocked for this decision |
-| Actual target values and sanitized COMMAREA at the 19 registered return/dispatch edges; operator | Incoming public transaction COMMAREA is not a closed literal set | UNT-2: golden capture — establish accepted inputs/outputs; UNT-7: online journeys — acceptance coverage and safe dispatch; cutover-approval |
-| Screen inputs/outputs and validation/empty/error journeys for approved programs; operator | Finite source candidates do not prove executed branches or screen behavior | UNT-2: golden capture; UNT-7: online journeys — signed-off golden fixtures and navigation/RBAC coverage |
-| Actual dataset CCSIDs, catalog keys/record boundaries and sanitized raw records; operator | CP037 remains a hypothesis; differing customer definitions need a contract decision | UNT-4: data model — lossless decoding, key mapping and migration validation; runtime-equivalence/cutover-approval |
-| Expanded JCL/PROCs, batch input/output bytes, spool, RC/abend and restart samples; operator | Symbolic DSNs and DISP are not complete runtime access semantics | UNT-2: golden capture — batch acceptance fixtures; UNT-4: data model — persisted record contract and totals; runtime-equivalence |
-| Active CICS/TDQUEUE/JES definitions, installed compiler/runtime options, redacted RACF and scheduler configuration; operator, manager approves replacements | Source dependencies are not installed configuration; JOBS-to-reader routing is unverified | UNT-2: golden capture — reproducible baseline; UNT-7: online journeys — security/report submission equivalence; cutover-approval |
+| COCRDSEC host load/source provenance and CDV1 usage; operator supplies, manager decides | Developer CSD entry has no source; exclusion is only proposed, not approved | s1.2/UNT-2: settle capture-protocol boundary; s2.1/UNT-4: settle developer-transaction architecture boundary without inventing implementation |
+| **15 core** runtime target/COMMAREA requests; operator | Incoming public transaction COMMAREA is not a closed literal set | s1.2/UNT-2: capture protocol and initial values; s1.3/UNT-3: golden navigation corpus; s4.1-s4.4/UNT-10..UNT-13: safe dispatch and online acceptance; s6.1/UNT-18: qualification consumes goldens |
+| **Four conditional** runtime requests (two authorization, two transaction-type); operator only if rescoped | Source files are excluded; no approved-core runtime evidence is required for them | No approved-core blocker (`blocking_for=[]`); requests activate only after an explicit rescoping decision |
+| Screen inputs/outputs and validation/empty/error journeys for approved programs; operator | Finite source candidates do not prove executed branches or screen behavior | s1.2/UNT-2: initial screen capture protocol; s1.3/UNT-3: golden screens; s4.1-s4.4/UNT-10..UNT-13: online journey coverage; s6.1/UNT-18: qualification consumes goldens |
+| Actual dataset CCSIDs, catalog keys/record boundaries and sanitized raw records; operator | CP037 remains a hypothesis; differing customer definitions need a contract decision | s1.2/UNT-2: raw transfer protocol; s1.3/UNT-3: golden raw bytes; s3.1/UNT-7: schema field/key contracts; s3.2/UNT-8: lossless EBCDIC/packed/zoned codecs; s6.1/UNT-18: qualification consumes decoded goldens |
+| Expanded JCL/PROCs, batch input/output bytes, spool, RC/abend and restart samples; operator | Symbolic DSNs and DISP are not complete runtime access semantics | s1.2/UNT-2: batch capture protocol; s1.3/UNT-3: golden batch corpus; s3.1/UNT-7 and s3.2/UNT-8: record contracts; s5.1-s5.4/UNT-14..UNT-17: batch output/order/restart semantics; s6.1/UNT-18: qualification consumes goldens |
+| Redacted RACF/identity profiles; operator, manager approves replacements | Source references do not prove installed authorization | s2.1/UNT-4: identity/RBAC architecture; s4.1-s4.4/UNT-10..UNT-13: relevant privileged online journeys; s6.1/UNT-18: qualification consumes authorization goldens |
+| Active CICS/TDQUEUE/JES and scheduler definitions; operator, manager approves replacements | JOBS-to-reader routing and active calendars are unverified | s2.1/UNT-4: scheduling/submission architecture; s1.3/UNT-3: golden batch/report outputs; s5.1-s5.4/UNT-14..UNT-17: orchestration; s4.1-s4.4/UNT-10..UNT-13: TDQ report submission; s6.1/UNT-18: qualification consumes goldens |
+| Installed runtime/compiler options and versions; operator | Source dependencies are not installed configuration | s1.2/UNT-2: reproducible capture baseline; s2.1/UNT-4: compatibility architecture; s6.1/UNT-18: qualification against the resulting golden corpus |
 
 No mainframe execution or fabricated captures are included. Static resolution
-reduces the target-discovery request, not the need for approved golden captures.
+reduces the target-discovery request, not the need for the approved golden corpus.
 
 
 ## Hypotheses (not runtime facts)
@@ -374,7 +399,9 @@ an owner, migration impact, later blocking steps and a precise operator ask.
 | Third-party licenses | LICENSE/NOTICE verified | manager/human-decision | Repository Apache 2.0 notice does not grant host-product entitlements; legal review required |
 
 All runtime versions, entitlement and deployed settings remain unknown until
-operator evidence arrives. These block runtime equivalence/cutover, not generation.
+operator evidence arrives. These inform the mapped architecture, implementation
+and qualification steps, not inventory generation. Excluded-extension dependencies
+are conditional on rescoping and block no approved-core step.
 
 ## Decisions needed
 
