@@ -7,6 +7,7 @@ import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 import inventory
 import check_manifest
+from navigation import Resolver
 
 
 class ParserTests(unittest.TestCase):
@@ -50,6 +51,10 @@ class IntegrityTests(unittest.TestCase):
         ca7 = self.manifest['batch']['scheduler_reconciliation'][0]
         self.assertEqual(ca7['job_to_member']['CLOSEFIL1'], 'CLOSEFIL')
         self.assertEqual(ca7['job_to_member']['CLOSEFIL2'], 'CLOSEFIL')
+        menus = [e for e in self.manifest['cics']['navigation'] if 'OPT-PGMNAME' in e['value']]
+        self.assertEqual([len(e['resolution']['candidates']) for e in menus], [6, 11, 11])
+        self.assertTrue(all(e['resolution']['classification'] == 'statically-resolved' for e in menus))
+        self.assertTrue(any('REDEFINES' in ev['text'] for ev in menus[0]['resolution']['candidates'][0]['evidence']))
 
     def test_tampered_blob_and_duplicate(self):
         m = copy.deepcopy(self.manifest)
@@ -109,6 +114,71 @@ class IntegrityTests(unittest.TestCase):
         gap = next(g for g in m['source_gaps'] if g['kind'] == 'unresolved-dynamic-target')
         m['source_gaps'].remove(gap)
         self.assertFalse(dict(check_manifest.validate(m))['source gap register and dynamic navigation accounting match curated policy'])
+
+    def test_tampered_resolved_candidate(self):
+        m = copy.deepcopy(self.manifest)
+        edge = next(e for e in m['cics']['navigation'] if e['binding'] == 'data-item' and e['resolution']['classification'] == 'statically-resolved')
+        edge['resolution']['candidates'][0]['target'] = 'ABSENT'
+        self.assertFalse(dict(check_manifest.validate(m))['statically resolved candidate targets and citation chains resolve'])
+
+
+class ResolverTests(unittest.TestCase):
+    @staticmethod
+    def fixed(*lines):
+        return '\n'.join('       ' + line for line in lines) + '\n'
+
+    @staticmethod
+    def edges(contents):
+        return [dict(d, source=p, evidence=[inventory.citation(p, t.splitlines(), d['line']-1)])
+                for p, t in contents.items() for d in inventory.dependencies(t) if d['type'] == 'navigation']
+
+    def test_literal_value(self):
+        contents = {'P.cbl': self.fixed('01 TARGET PIC X(8) VALUE', "'DEST'.", 'PROCEDURE DIVISION.', 'EXEC CICS XCTL PROGRAM(TARGET) END-EXEC.')}
+        edges = self.edges(contents)
+        result = Resolver(contents, edges).resolve(edges[0])
+        self.assertEqual(result['classification'], 'statically-resolved')
+        self.assertEqual([c['target'] for c in result['candidates']], ['DEST'])
+        self.assertTrue(any("'DEST'" in ev['text'] for ev in result['candidates'][0]['evidence']))
+
+    def test_move_literal_assignment_chain(self):
+        contents = {'P.cbl': self.fixed('01 TARGET PIC X(8).', "01 CONST PIC X(8) VALUE 'DEST'.", 'PROCEDURE DIVISION.', 'MOVE CONST TO TARGET', 'EXEC CICS XCTL PROGRAM(TARGET) END-EXEC.')}
+        edges = self.edges(contents)
+        result = Resolver(contents, edges).resolve(edges[0])
+        self.assertEqual(result['classification'], 'statically-resolved')
+        chain = result['candidates'][0]['evidence']
+        self.assertTrue(any('MOVE CONST TO TARGET' in ev['text'] for ev in chain))
+        contents['P.cbl'] = contents['P.cbl'].replace('MOVE CONST TO TARGET', "MOVE 'DEST' TO TARGET")
+        edges = self.edges(contents)
+        self.assertEqual(Resolver(contents, edges).resolve(edges[0])['classification'], 'statically-resolved')
+
+    def test_commarea_propagated_union_and_external_negative(self):
+        contents = {'A.cbl': self.fixed('01 CARDDEMO-COMMAREA.', '05 CDEMO-FROM-PROGRAM PIC X(8).', 'PROCEDURE DIVISION.', "MOVE 'FIRST' TO CDEMO-FROM-PROGRAM", "EXEC CICS XCTL PROGRAM('CALLEE') COMMAREA(CARDDEMO-COMMAREA) END-EXEC."),
+                    'B.cbl': self.fixed('01 CARDDEMO-COMMAREA.', '05 CDEMO-FROM-PROGRAM PIC X(8).', 'PROCEDURE DIVISION.', "MOVE 'SECOND' TO CDEMO-FROM-PROGRAM", "EXEC CICS XCTL PROGRAM('CALLEE') COMMAREA(CARDDEMO-COMMAREA) END-EXEC."),
+                    'CALLEE.cbl': self.fixed('01 CARDDEMO-COMMAREA.', '05 CDEMO-FROM-PROGRAM PIC X(8).', 'PROCEDURE DIVISION.', 'MOVE DFHCOMMAREA TO CARDDEMO-COMMAREA', 'EXEC CICS XCTL PROGRAM(CDEMO-FROM-PROGRAM) END-EXEC.')}
+        edges = self.edges(contents)
+        result = Resolver(contents, edges).resolve(edges[-1])
+        self.assertEqual(result['classification'], 'statically-resolved')
+        self.assertEqual([c['target'] for c in result['candidates']], ['FIRST', 'SECOND'])
+        for candidate in result['candidates']:
+            self.assertTrue(any('MOVE DFHCOMMAREA' in ev['text'] for ev in candidate['evidence']))
+            self.assertTrue(any('TO CDEMO-FROM-PROGRAM' in ev['text'] for ev in candidate['evidence']))
+        result = Resolver(contents, edges, ['CALLEE']).resolve(edges[-1])
+        self.assertEqual(result['classification'], 'runtime-dependent')
+        self.assertIn('externally initiated', result['reason'])
+
+    def test_runtime_terminal_input_and_group_overwrite(self):
+        for write in ('ACCEPT TARGET', 'MOVE INPUT-RECORD TO GROUP-RECORD'):
+            with self.subTest(write=write):
+                contents = {'P.cbl': self.fixed('01 GROUP-RECORD.', "05 TARGET PIC X(8) VALUE 'DEST'.", 'PROCEDURE DIVISION.', write, 'EXEC CICS XCTL PROGRAM(TARGET) END-EXEC.')}
+                edges = self.edges(contents)
+                result = Resolver(contents, edges).resolve(edges[0])
+                self.assertEqual(result['classification'], 'runtime-dependent')
+                self.assertTrue(result['evidence'])
+
+    def test_conditional_assignment_is_not_a_proof(self):
+        contents = {'P.cbl': self.fixed('01 TARGET PIC X(8).', 'PROCEDURE DIVISION.', 'IF SWITCH = 1', "MOVE 'DEST' TO TARGET", 'END-IF', 'EXEC CICS XCTL PROGRAM(TARGET) END-EXEC.')}
+        edges = self.edges(contents)
+        self.assertEqual(Resolver(contents, edges).resolve(edges[0])['classification'], 'runtime-dependent')
 
 
 if __name__ == '__main__':

@@ -26,7 +26,7 @@
     "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
     "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
     "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
-    "blocking_for": ["navigation-equivalence", "cutover-approval"]
+    "blocking_for": ["UNT-2: golden capture", "UNT-7: online journeys", "cutover-approval"]
   },
   "rules": [
     {"pattern": "*", "disposition": "compatibility-adapter", "target_module": "platform", "owner": "migration-team", "reason": "Retain source/build/data provenance; replace host integration with an explicit adapter, not a Java business implementation in this ticket."},

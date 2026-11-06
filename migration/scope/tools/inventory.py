@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+from navigation import Resolver
 
 ROOT = Path(__file__).resolve().parents[3]
 SCOPE = ROOT / 'migration/scope'
@@ -19,6 +20,17 @@ def git(*args):
 def tracked():
     return dict((p, meta.split()[2]) for row in git('ls-tree', '-r', 'HEAD', 'app', 'scripts', 'samples').splitlines()
                 for meta, p in [row.split('\t', 1)])
+
+
+def absence_evidence():
+    command = ['git', 'grep', '-n', '-i', 'COCRDSEC', SOURCE_SHA, '--']
+    search = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, check=False)
+    files = [p for p in git('ls-tree', '-r', '--name-only', SOURCE_SHA).splitlines() if re.search('cocrdsec', p, re.I)]
+    return [{'command': ' '.join(command), 'stdout': search.stdout, 'exit_code': search.returncode,
+             'scope': 'whole tracked authoritative source tree, excluding no paths'},
+            {'command': f'git ls-tree -r --name-only {SOURCE_SHA} | grep -i cocrdsec',
+             'stdout': ''.join(p + '\n' for p in files), 'exit_code': 0 if files else 1,
+             'scope': 'whole tracked authoritative source tree; filename filter computed with Python re (case-insensitive)'}]
 
 
 def citation(path, lines, index):
@@ -166,6 +178,19 @@ def generate():
                 navigation.append({'source': entry['path'], **dep,
                                    'commarea_copybooks': [d['value'] for d in entry['dependencies'] if d['type'] == 'copy' and 'COM' in d['value']],
                                    'resolution': 'literal' if re.search(r"(?:PROGRAM|TRANSID)\s*\(\s*['\"]", contents[entry['path']].splitlines()[dep['line']-1]) else 'dynamic; operator journey required'})
+    all_resources = [r for p, t in sorted(contents.items()) if Path(p).suffix.lower() == '.csd' for r in parse_csd(p, t)]
+    public = {}
+    for resource in all_resources:
+        if resource['type'] == 'transaction':
+            public.setdefault(resource['attributes'].get('PROGRAM'), []).extend(resource['evidence'])
+    resolver = Resolver(contents, navigation, public)
+    programs = {Path(e['path']).stem.upper() for e in entries if e['kind'].startswith('cobol') or e['kind'] == 'asm'}
+    transactions = {r['name'] for r in all_resources if r['type'] == 'transaction'}
+    for edge in navigation:
+        if edge['binding'] == 'data-item':
+            edge['resolution'] = resolver.resolve(edge)
+            for candidate in edge['resolution']['candidates']:
+                candidate['resolution'] = 'inventoried' if candidate['target'] in (transactions if edge['operation'] == 'RETURN' else programs) else 'unresolved-source-target'
     scheduled = []
     for path in ('app/scheduler/CardDemo.ca7', 'app/scheduler/CardDemo.controlm'):
         text = contents[path]
@@ -182,13 +207,16 @@ def generate():
                           'script_references': [{'path': p, 'jobs': sorted(n for n in names if n in t)} for p, t in contents.items() if p.startswith('scripts/') and any(n in t for n in names)]})
     external = external_dependencies(entries, contents)
     gaps = list(dispositions['source_gaps'])
+    for gap in gaps:
+        if gap['resource'] == 'COCRDSEC':
+            gap['absence_evidence'] = absence_evidence()
     for edge in navigation:
-        if edge['binding'] == 'data-item':
+        if edge['binding'] == 'data-item' and edge['resolution']['classification'] == 'runtime-dependent':
             gaps.append(dict(dispositions['dynamic_navigation_policy'],
                              id=f"navigation:{edge['source']}:{edge['line']}:{edge['operation']}",
-                             resource=edge['value'], evidence=edge['evidence']))
+                             resource=edge['value'], reason=edge['resolution']['reason'], evidence=edge['resolution']['evidence']))
     return {'schema_version': '1.0.0', 'source_sha': SOURCE_SHA, 'entries': entries,
-            'cics': {'resources': csd, 'navigation': navigation, 'bms_definitions': bms},
+            'cics': {'resources': csd, 'navigation': navigation, 'bms_definitions': bms, 'all_csd_resources': all_resources},
             'datasets': {'definitions': definitions, 'dd_lineage': [dd for j in jobs for dd in j['dds']],
                          'cics_file_mapping': [r for r in csd if r['type'] == 'file']},
             'batch': {'jobs': jobs, 'scheduler_reconciliation': scheduled},

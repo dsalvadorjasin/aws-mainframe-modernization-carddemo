@@ -54,6 +54,15 @@ def validate(manifest, freshness=True):
     # Reconcile against independently re-parsed source, not a permissive allow-list.
     expected = inventory.generate()
     check('CSD and navigation faithfully reconcile (source gaps reported)', manifest['cics'] == expected['cics'])
+    dynamic = [e for e in manifest['cics']['navigation'] if e['binding'] == 'data-item']
+    check('every dynamic navigation edge classified with evidence', all(isinstance(e.get('resolution'), dict) and
+          e['resolution'].get('classification') in ('statically-resolved', 'runtime-dependent') and
+          e['resolution'].get('reason') and e['resolution'].get('evidence') for e in dynamic))
+    all_transactions = {r['name'] for r in manifest['cics']['all_csd_resources'] if r['type'] == 'transaction'}
+    check('statically resolved candidate targets and citation chains resolve', all(
+        e['resolution']['candidates'] and all(c.get('evidence') and c.get('resolution') == 'inventoried' and
+        c['target'] in (all_transactions if e['operation'] == 'RETURN' else programs)
+        for c in e['resolution']['candidates']) for e in dynamic if e['resolution']['classification'] == 'statically-resolved'))
     gaps = manifest.get('source_gaps', [])
     required = ('id', 'resource', 'kind', 'proposed_disposition', 'owner', 'evidence', 'decision', 'impact', 'operator_evidence_needed', 'blocking_for')
     check('source gaps have unique IDs, ownership, evidence and pending decisions',
@@ -65,6 +74,13 @@ def validate(manifest, freshness=True):
               all(ev.get('path') == 'app/csd/CARDDEMO.CSD' for ev in g['evidence'])
               for g in gaps if g.get('kind') == 'missing-source'))
     check('source gap register and dynamic navigation accounting match curated policy', gaps == expected['source_gaps'])
+    runtime = [e for e in dynamic if e['resolution']['classification'] == 'runtime-dependent']
+    runtime_gaps = {g['id']: g for g in gaps if g.get('kind') == 'unresolved-dynamic-target'}
+    runtime_ids = {f"navigation:{e['source']}:{e['line']}:{e['operation']}" for e in runtime}
+    check('only runtime-dependent edges have operator gaps with reasons and requests', set(runtime_gaps) == runtime_ids and
+          all(g.get('reason') and g.get('evidence') and g.get('operator_evidence_needed') for g in runtime_gaps.values()))
+    check('COCRDSEC whole-source absence searches reproduce exactly', all(g.get('absence_evidence') == inventory.absence_evidence()
+          for g in gaps if g.get('resource') == 'COCRDSEC'))
     check('scheduler jobs have JCL members', not any(s['missing_members'] for s in manifest['batch']['scheduler_reconciliation']))
     check('scheduler missing/unscheduled members faithfully reconcile', manifest['batch']['scheduler_reconciliation'] == expected['batch']['scheduler_reconciliation'])
     check('approved scope retained and optional extensions excluded', all(
@@ -91,6 +107,7 @@ def main():
         print(('PASS' if ok else 'FAIL') + ' ' + name)
     print('REGISTERED SOURCE GAP pending decision: ' + ', '.join(source_gaps(manifest)))
     print('REGISTERED RUNTIME GAPS dynamic navigation targets: ' + str(sum(g['kind'] == 'unresolved-dynamic-target' for g in manifest['source_gaps'])))
+    print('STATICALLY RESOLVED dynamic navigation targets: ' + str(sum(e['binding'] == 'data-item' and e['resolution']['classification'] == 'statically-resolved' for e in manifest['cics']['navigation'])))
     return int(not all(ok for _, ok in results))
 
 
