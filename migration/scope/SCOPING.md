@@ -380,10 +380,24 @@ The manifest has precise per-core-screen and per-core-JCL requests, owned by
 verified. Every manifest external has exact citations (unless hypothesis/unknown),
 an owner, migration impact, later blocking steps and a precise operator ask.
 
+JCL program resolution is closed: an unresolved `PGM=` is external only if it
+matches the curated `external_pgm_allowlist` in `dispositions.json`, independently
+enforced by the checker. Each allowlist entry records its IBM product, rationale,
+vendor-documentation URL and a source reference. The 16 current entries are
+ASMA90, DFHCSDUP, DFHECP1$, DFSRRC00, DSNHPC, FTP, HEWL, IDCAMS, IEBGENER,
+IEFBR14, IEWL, IGYCRCTL, IKJEFT01, IKJEFT1B, SDSF and SORT. The `$` suffix in
+DFHECP1$ is preserved; DFHECP1 is not an alias inferred by the inventory.
+All other referenced PGMs resolve to inventoried application/assembler sources;
+there is no new missing-PGM source gap. Future unknown PGMs fail the gate rather
+than acquiring vendor status automatically, even if inserted into the external
+dependency list. TXT2PDF remains an external command dependency with unknown
+installed provenance: `app/jcl/TXT2PDF1.JCL:24,38` invokes it through IKJEFT1B,
+not `PGM=TXT2PDF`, so it is not added to the PGM allowlist.
+
 | Dependency | Source status | Owner | Migration impact / evidence needed |
 |---|---|---|---|
 | z/OS, CICS TS | verified references | operator | Host/JES/CICS replacement semantics; versions and installed definitions |
-| Enterprise COBOL compiler/options, IGYCRCTL, DFHECP1 | verified references | operator | Capture actual compile/translator options, listings and numeric behavior |
+| Enterprise COBOL compiler/options, IGYCRCTL, DFHECP1$ | verified references | operator | Capture actual compile/translator options, listings and numeric behavior |
 | HLASM, ASMA90, MVSWAIT/COBDATFT + ASMWAIT/COCDATFT macros | verified references | operator | Replace wait/date host routines; macro expansion/link-edit evidence |
 | CP037 | hypothesis | operator | Validate per-file CCSID and lossless round-trip before data import |
 | RACF | verified references | operator | Map runtime access controls to approved identity/RBAC model |

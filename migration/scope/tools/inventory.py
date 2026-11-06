@@ -65,7 +65,7 @@ def dependencies(text):
         'map': r'\bMAP\s*\(\s*([^)]*)\)',
         'mapset': r'\bMAPSET\s*\(\s*([^)]*)\)',
         'file': r'\bFILE\s*\(\s*([^)]*)\)',
-        'pgm': r'\bPGM\s*=\s*[\'\"]?([\w&.-]+)',
+        'pgm': r'\bPGM\s*=\s*[\'\"]?([\w@$#&.-]+)',
         'dsn': r'\bDSN(?:AME)?\s*=\s*([^,\s]+)'}
     for kind, pattern in patterns.items():
         source = code if kind not in ('pgm', 'dsn') else text
@@ -221,7 +221,7 @@ def generate():
                           'dependencies': [{'line': i+1, 'text': s} for i, s in enumerate(text.splitlines()) if 'SCHID=' in s or '<INCOND ' in s or '<OUTCOND ' in s],
                           'not_scheduled_core_jcl': sorted({Path(j['path']).stem.upper() for j in jobs if j['path'].startswith('app/jcl/')}-resolved_members),
                           'script_references': [{'path': p, 'jobs': sorted(n for n in names if n in t)} for p, t in contents.items() if p.startswith('scripts/') and any(n in t for n in names)]})
-    external = external_dependencies(entries, contents)
+    external = external_dependencies(entries, contents, dispositions['external_pgm_allowlist'])
     gaps = list(dispositions['source_gaps'])
     for gap in gaps:
         if gap['resource'] == 'COCRDSEC':
@@ -245,6 +245,7 @@ def generate():
                          'cics_file_mapping': [r for r in csd if r['type'] == 'file']},
             'batch': {'jobs': jobs, 'scheduler_reconciliation': scheduled},
             'external_dependencies': external,
+            'external_pgm_allowlist': dispositions['external_pgm_allowlist'],
             'plan_steps': PLAN_STEPS,
             'source_gaps': sorted(gaps, key=lambda gap: gap['id']),
             'operator_evidence_requests': operator_requests(entries, jobs),
@@ -258,7 +259,7 @@ def generate():
                  for gap in dispositions['source_gaps']]}
 
 
-def external_dependencies(entries, contents):
+def external_dependencies(entries, contents, pgm_allowlist):
     specs = {'z/OS': r'z/OS|MVS|SYSUID', 'CICS TS': r'EXEC CICS|DEFINE TRANSACTION',
              'Enterprise COBOL compiler/options': r'COBOL|IGYCRCTL', 'HLASM': r'ASMA90|HLASM|CSECT',
              'code page CP037': r'CP037|IBM-037', 'RACF': r'RACF', 'DFSORT/SORT': r'PGM=SORT',
@@ -266,10 +267,10 @@ def external_dependencies(entries, contents):
              'TDQ': r'WRITEQ TD|TDQUEUE|QUEUE\(', 'CA7/Control-M': r'JOBNAME=|1LJOB',
              'MVSWAIT/COBDATFT/maclib': r'MVSWAIT|COBDATFT|ASMWAIT|COCDATFT',
              'LE date services': r'CEE(?:DAYS|DASE|SECS|SECI|DATE)', 'third-party licenses': r'Apache|Copyright'}
-    pgms = {d['value'] for e in entries for d in e['dependencies'] if d['type'] == 'pgm'}
+    pgms = {d['value'].upper() for e in entries for d in e['dependencies'] if d['type'] == 'pgm'}
     programs = {Path(e['path']).stem.upper() for e in entries if e['kind'].startswith('cobol') or e['kind'] == 'asm'}
-    for p in sorted(pgms-programs):
-        specs[p] = r'PGM\s*=\s*[\'\"]?' + re.escape(p)
+    for p in sorted((pgms-programs) & pgm_allowlist.keys()):
+        specs[p] = r'\bPGM\s*=\s*[\'\"]?' + re.escape(p) + r'(?=[,\s\'\"]|$)'
     specs.update({'DFHAID': r'COPY DFHAID', 'DFHBMSCA': r'COPY DFHBMSCA', 'SQLCA': r'INCLUDE SQLCA|COPY SQLCA'})
     for e in entries:
         for d in e['dependencies']:

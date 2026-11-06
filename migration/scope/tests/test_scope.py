@@ -23,6 +23,11 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(inventory.parse_defines('x', ''), [])
         self.assertEqual(inventory.parse_jcl('x', '')['steps'], [])
 
+    def test_pgm_special_characters(self):
+        text = '//TRN EXEC PGM=DFHECP1$,PARM=COBOL3\n'
+        self.assertEqual([d['value'] for d in inventory.dependencies(text) if d['type'] == 'pgm'], ['DFHECP1$'])
+        self.assertEqual(inventory.parse_jcl('x', text)['steps'][0]['pgm'], 'DFHECP1$')
+
     def test_jcl_continuation_and_lineage(self):
         j = inventory.parse_jcl('x', '//TEST JOB A\n//S EXEC PGM=SORT\n//IN DD DISP=SHR,\n// DSN=A.B\n')
         self.assertEqual(j['steps'][0]['pgm'], 'SORT')
@@ -85,6 +90,21 @@ class IntegrityTests(unittest.TestCase):
         checks = dict(check_manifest.validate(m))
         self.assertFalse(checks['JCL PGM resolves or explicitly external'])
         self.assertFalse(checks['PROC references resolve'])
+
+    def test_nonallowlisted_pgm_not_auto_external(self):
+        allowlist = self.manifest['external_pgm_allowlist']
+        entry = {'path': 'unknown.jcl', 'kind': 'jcl', 'dependencies': [
+            {'type': 'pgm', 'value': 'CBFOO01C'}, {'type': 'pgm', 'value': 'IDCAMS'}]}
+        externals = inventory.external_dependencies([entry], {'unknown.jcl': '//X EXEC PGM=CBFOO01C\n//Y EXEC PGM=IDCAMS\n'}, allowlist)
+        self.assertNotIn('CBFOO01C', {e['name'] for e in externals})
+        self.assertIn('IDCAMS', {e['name'] for e in externals})
+        for fake_external in (False, True):
+            with self.subTest(fake_external=fake_external):
+                m = copy.deepcopy(self.manifest)
+                m['entries'][0]['dependencies'].append({'type': 'pgm', 'value': 'CBFOO01C'})
+                if fake_external:
+                    m['external_dependencies'].append({'name': 'CBFOO01C', 'status': 'verified'})
+                self.assertFalse(dict(check_manifest.validate(m, freshness=False))['JCL PGM resolves or explicitly external'])
 
     def test_scheduler_tamper(self):
         m = copy.deepcopy(self.manifest)

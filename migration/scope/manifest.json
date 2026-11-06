@@ -64164,7 +64164,7 @@
           "line": 28,
           "operation": "pgm",
           "type": "pgm",
-          "value": "DFHECP1"
+          "value": "DFHECP1$"
         },
         {
           "binding": "literal",
@@ -65009,7 +65009,7 @@
           "line": 68,
           "operation": "pgm",
           "type": "pgm",
-          "value": "DFHECP1"
+          "value": "DFHECP1$"
         },
         {
           "binding": "literal",
@@ -68937,8 +68937,8 @@
         }
       ],
       "impact_on_migration": "Installed versions/options configure the capture baseline and target integration architecture; qualification must use the resulting golden corpus.",
-      "name": "DFHECP1",
-      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for DFHECP1",
+      "name": "DFHECP1$",
+      "operator_evidence_needed": "Supply installed version/configuration, invocation/options, license entitlement and sanitized success/failure captures for DFHECP1$",
       "owner": "operator",
       "status": "verified"
     },
@@ -69743,6 +69743,104 @@
       "status": "verified"
     }
   ],
+  "external_pgm_allowlist": {
+    "ASMA90": {
+      "product": "IBM High Level Assembler",
+      "rationale": "IBM documents ASMA90 as the z/OS batch assembler entry point.",
+      "source_reference": "samples/proc/BUILDBMS.prc:49",
+      "vendor_reference": "https://www.ibm.com/docs/en/hla-and-tf/1.6.0?topic=options-invocation"
+    },
+    "DFHCSDUP": {
+      "product": "IBM CICS TS",
+      "rationale": "IBM identifies DFHCSDUP as the offline CSD resource-definition utility.",
+      "source_reference": "app/jcl/CBADMCDJ.jcl:27",
+      "vendor_reference": "https://www.ibm.com/docs/en/cics-ts/6.x?topic=components-cics-utility-program-dfhcsdup"
+    },
+    "DFHECP1$": {
+      "product": "IBM CICS TS",
+      "rationale": "IBM APAR PH41716 explicitly identifies DFHECP1$ as the CICS stand-alone COBOL translator; the dollar suffix is part of the program name.",
+      "source_reference": "samples/jcl/IMSMQCMP.jcl:28",
+      "vendor_reference": "https://www.ibm.com/support/pages/apar/PH41716"
+    },
+    "DFSRRC00": {
+      "product": "IBM IMS",
+      "rationale": "IBM identifies DFSRRC00 as the IMS region controller, not an application program.",
+      "source_reference": "app/app-authorization-ims-db2-mq/jcl/CBPAUP0J.jcl:24",
+      "vendor_reference": "https://www.ibm.com/docs/en/ims-hppc/3.1.0?topic=language-fabpmain-exec-statement"
+    },
+    "DSNHPC": {
+      "product": "IBM Db2 for z/OS",
+      "rationale": "IBM identifies DSNHPC as the Db2 precompiler load module.",
+      "source_reference": "samples/proc/BLDCIDB2.prc:46",
+      "vendor_reference": "https://www.ibm.com/docs/en/db2-for-zos/12.0.0?topic=precompiler-data-sets-that-uses"
+    },
+    "FTP": {
+      "product": "IBM z/OS Communications Server",
+      "rationale": "IBM supplies batch FTP JCL invoking PGM=FTP; installed configuration and entitlement remain operator evidence.",
+      "source_reference": "app/jcl/FTPJCL.JCL:30",
+      "vendor_reference": "https://www.ibm.com/support/pages/system/files/inline-files/Sample_Batch_FTPS_JOB.txt"
+    },
+    "HEWL": {
+      "product": "IBM z/OS binder/link-edit",
+      "rationale": "IBM lists HEWL as a link-edit EXEC program name.",
+      "source_reference": "samples/proc/BLDCIDB2.prc:114",
+      "vendor_reference": "https://www.ibm.com/docs/en/zos/3.2.0?topic=processing-link-edit-steps"
+    },
+    "IDCAMS": {
+      "product": "IBM z/OS access method services",
+      "rationale": "IBM identifies IDCAMS as access method services for catalogs and VSAM datasets.",
+      "source_reference": "app/jcl/ACCTFILE.jcl:22",
+      "vendor_reference": "https://www.ibm.com/docs/en/zos-basic-skills?topic=programs-data-set-utilities"
+    },
+    "IEBGENER": {
+      "product": "IBM z/OS DFSMS utilities",
+      "rationale": "IBM identifies IEBGENER as the operating-system sequential dataset copy utility.",
+      "source_reference": "app/app-transaction-type-db2/jcl/TRANEXTR.jcl:31",
+      "vendor_reference": "https://www.ibm.com/docs/en/zos-basic-skills?topic=programs-data-set-utilities"
+    },
+    "IEFBR14": {
+      "product": "IBM z/OS utilities",
+      "rationale": "IBM identifies IEFBR14 as the system utility returning completion code zero for allocation/deallocation jobs.",
+      "source_reference": "app/app-authorization-ims-db2-mq/jcl/DBPAUTP0.jcl:7",
+      "vendor_reference": "https://www.ibm.com/docs/en/zos-basic-skills?topic=programs-data-set-utilities"
+    },
+    "IEWL": {
+      "product": "IBM z/OS binder/link-edit",
+      "rationale": "IBM lists IEWL as a link-edit EXEC program name.",
+      "source_reference": "samples/jcl/IMSMQCMP.jcl:100",
+      "vendor_reference": "https://www.ibm.com/docs/en/zos/3.2.0?topic=processing-link-edit-steps"
+    },
+    "IGYCRCTL": {
+      "product": "IBM Enterprise COBOL",
+      "rationale": "IBM identifies IGYCRCTL as the Enterprise COBOL compiler invoked by EXEC.",
+      "source_reference": "samples/jcl/IMSMQCMP.jcl:37",
+      "vendor_reference": "https://www.ibm.com/docs/en/cobol-zos/6.4.0?topic=jcl-writing-compile-programs"
+    },
+    "IKJEFT01": {
+      "product": "IBM z/OS TSO/E",
+      "rationale": "IBM identifies IKJEFT01 as a TSO/E background terminal monitor program.",
+      "source_reference": "app/app-transaction-type-db2/jcl/CREADB21.jcl:40",
+      "vendor_reference": "https://www.ibm.com/support/pages/mustgather-wdi-zos-batch-jcl-processing"
+    },
+    "IKJEFT1B": {
+      "product": "IBM z/OS TSO/E",
+      "rationale": "IBM identifies IKJEFT1B as a TSO/E background terminal monitor program; this source invokes the TXT2PDF command through it.",
+      "source_reference": "app/jcl/TXT2PDF1.JCL:24",
+      "vendor_reference": "https://www.ibm.com/support/pages/mustgather-wdi-zos-batch-jcl-processing"
+    },
+    "SDSF": {
+      "product": "IBM z/OS SDSF",
+      "rationale": "IBM documents PGM=SDSF as the batch entry point supporting commands and action characters.",
+      "source_reference": "app/jcl/CARDFILE.jcl:22",
+      "vendor_reference": "https://www.ibm.com/docs/en/zos/3.2.0?topic=batch-invoking-sdsf-in"
+    },
+    "SORT": {
+      "product": "IBM z/OS DFSORT interface",
+      "rationale": "IBM documents EXEC PGM=SORT for DFSORT; actual installed sort product remains an operator confirmation.",
+      "source_reference": "app/jcl/COMBTRAN.jcl:22",
+      "vendor_reference": "https://www.ibm.com/docs/en/zos/3.1.0?topic=sets-jcl-sorting-data-directly"
+    }
+  },
   "operator_evidence_requests": [
     {
       "ask": "Capture z/OS, CICS TS, compiler and HLASM versions; compiler/link-edit options; LE configuration; actual dataset CCSID/code page and transfer mode; RACF profiles (redacted); active scheduler product, calendars, dependencies and restart rules.",

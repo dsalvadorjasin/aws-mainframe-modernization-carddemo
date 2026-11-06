@@ -42,7 +42,19 @@ def validate(manifest, freshness=True):
     externals = {e['name'].upper() for e in manifest['external_dependencies']}
     check('COPY resolves or explicitly external', all(d['value'].upper() in copies | externals for e in entries for d in e['dependencies'] if d['type'] == 'copy'))
     programs = {Path(e['path']).stem.upper() for e in entries if e['kind'].startswith('cobol') or e['kind'] == 'asm'}
-    check('JCL PGM resolves or explicitly external', all(d['value'].upper() in programs | externals for e in entries for d in e['dependencies'] if d['type'] == 'pgm'))
+    pgm_allowlist = json.loads((inventory.SCOPE / 'dispositions.json').read_text())['external_pgm_allowlist']
+    referenced_pgms = {d['value'].upper() for e in entries for d in e['dependencies'] if d['type'] == 'pgm'}
+    referenced_pgms.update(s['pgm'].upper() for j in manifest['batch']['jobs'] for s in j['steps'] if s.get('pgm'))
+    allowlist_evidence = True
+    for name, spec in pgm_allowlist.items():
+        path, line = spec['source_reference'].rsplit(':', 1)
+        allowlist_evidence &= any(e['path'] == path and any(d['type'] == 'pgm' and d['value'].upper() == name and d.get('line') == int(line)
+                                  for d in e['dependencies']) for e in entries)
+    check('curated external PGM allowlist has referenced programs and vendor rationale',
+          manifest.get('external_pgm_allowlist') == pgm_allowlist and
+          set(pgm_allowlist) <= referenced_pgms - programs and allowlist_evidence and
+          all(all(spec.get(k) for k in ('product', 'rationale', 'vendor_reference', 'source_reference')) for spec in pgm_allowlist.values()))
+    check('JCL PGM resolves or explicitly external', referenced_pgms <= programs | (set(pgm_allowlist) & externals))
     procs = {Path(e['path']).stem.upper() for e in entries if e['kind'] == 'proc'}
     check('PROC references resolve', all(s['proc'] is None or s['proc'].upper() in procs for j in manifest['batch']['jobs'] for s in j['steps']))
     transactions = {r['name'] for r in manifest['cics']['resources'] if r['type'] == 'transaction'}
