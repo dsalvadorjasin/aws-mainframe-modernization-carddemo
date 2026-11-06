@@ -29763,6 +29763,12 @@
       "id": "scope-freeze",
       "impact": "Approve proposed module ownership and disposition overlay before migration.",
       "owner": "manager/human-decision"
+    },
+    {
+      "decision": "Confirm source availability or approve exclusion of developer transaction CDV1/COCRDSEC; it is not part of approved user journeys. No exclusion is approved by this register.",
+      "id": "csd-cdv1-cocrdsec",
+      "impact": "No repository implementation exists for this CSD developer transaction; do not invent behavior or expand approved user journeys.",
+      "owner": "manager/human-decision"
     }
   ],
   "entries": [
@@ -56959,5 +56965,1199 @@
     }
   ],
   "schema_version": "1.0.0",
+  "source_gaps": [
+    {
+      "blocking_for": [
+        "developer-transaction-scope-approval",
+        "cutover-approval"
+      ],
+      "decision": "Confirm source availability or approve exclusion of developer transaction CDV1/COCRDSEC; it is not part of approved user journeys. No exclusion is approved by this register.",
+      "evidence": [
+        {
+          "line": 211,
+          "path": "app/csd/CARDDEMO.CSD",
+          "text": " DEFINE PROGRAM(COCRDSEC) GROUP(CARDDEMO)"
+        },
+        {
+          "line": 388,
+          "path": "app/csd/CARDDEMO.CSD",
+          "text": " DEFINE TRANSACTION(CDV1) GROUP(CARDDEMO)"
+        },
+        {
+          "line": 389,
+          "path": "app/csd/CARDDEMO.CSD",
+          "text": " DESCRIPTION(DEVELOPER TRANSACTION - 1)"
+        },
+        {
+          "line": 390,
+          "path": "app/csd/CARDDEMO.CSD",
+          "text": "        PROGRAM(COCRDSEC) TWASIZE(0) PROFILE(DFHCICST) STATUS(ENABLED)"
+        }
+      ],
+      "id": "csd-cdv1-cocrdsec",
+      "impact": "No repository implementation exists for this CSD developer transaction; do not invent behavior or expand approved user journeys.",
+      "kind": "missing-source",
+      "operator_evidence_needed": "confirm whether a COCRDSEC load module exists on the host and whether CDV1 is used; supply source or approve exclusion",
+      "owner": "manager/human-decision",
+      "proposed_disposition": "excluded-pending-decision",
+      "resource": "COCRDSEC",
+      "transaction": "CDV1"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 254,
+          "path": "app/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl:254:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-CICS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 323,
+          "path": "app/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl",
+          "text": "                            XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl:323:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 675,
+          "path": "app/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl",
+          "text": "               XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/app-authorization-ims-db2-mq/cbl/COPAUS0C.cbl:675:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 202,
+          "path": "app/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl:202:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-CICS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 248,
+          "path": "app/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl",
+          "text": "           EXEC CICS LINK"
+        }
+      ],
+      "id": "navigation:app/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl:248:LINK",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-PGM-AUTH-FRAUD"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 368,
+          "path": "app/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl",
+          "text": "               XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/app-authorization-ims-db2-mq/cbl/COPAUS1C.cbl:368:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 620,
+          "path": "app/app-transaction-type-db2/cbl/COTRTLIC.cbl",
+          "text": "062000        EXEC CICS XCTL"
+        }
+      ],
+      "id": "navigation:app/app-transaction-type-db2/cbl/COTRTLIC.cbl:620:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 648,
+          "path": "app/app-transaction-type-db2/cbl/COTRTLIC.cbl",
+          "text": "064800        EXEC CICS XCTL"
+        }
+      ],
+      "id": "navigation:app/app-transaction-type-db2/cbl/COTRTLIC.cbl:648:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "LIT-ADDTPGM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 910,
+          "path": "app/app-transaction-type-db2/cbl/COTRTLIC.cbl",
+          "text": "091000     EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/app-transaction-type-db2/cbl/COTRTLIC.cbl:910:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "LIT-THISTRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 457,
+          "path": "app/app-transaction-type-db2/cbl/COTRTUPC.cbl",
+          "text": "045700             EXEC CICS XCTL                                       04570000"
+        }
+      ],
+      "id": "navigation:app/app-transaction-type-db2/cbl/COTRTUPC.cbl:457:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 567,
+          "path": "app/app-transaction-type-db2/cbl/COTRTUPC.cbl",
+          "text": "056700     EXEC CICS RETURN                                             05670000"
+        }
+      ],
+      "id": "navigation:app/app-transaction-type-db2/cbl/COTRTUPC.cbl:567:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "LIT-THISTRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 1015,
+          "path": "app/cbl/COACTUPC.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/cbl/COACTUPC.cbl:1015:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "LIT-THISTRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 956,
+          "path": "app/cbl/COACTUPC.cbl",
+          "text": "                   EXEC CICS XCTL"
+        }
+      ],
+      "id": "navigation:app/cbl/COACTUPC.cbl:956:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 349,
+          "path": "app/cbl/COACTVWC.cbl",
+          "text": "                   EXEC CICS XCTL                                               "
+        }
+      ],
+      "id": "navigation:app/cbl/COACTVWC.cbl:349:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 402,
+          "path": "app/cbl/COACTVWC.cbl",
+          "text": "           EXEC CICS RETURN                                                     "
+        }
+      ],
+      "id": "navigation:app/cbl/COACTVWC.cbl:402:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "LIT-THISTRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 111,
+          "path": "app/cbl/COADM01C.cbl",
+          "text": "           EXEC CICS RETURN                                                     "
+        }
+      ],
+      "id": "navigation:app/cbl/COADM01C.cbl:111:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 146,
+          "path": "app/cbl/COADM01C.cbl",
+          "text": "                       XCTL PROGRAM(CDEMO-ADMIN-OPT-PGMNAME(WS-OPTION))         "
+        }
+      ],
+      "id": "navigation:app/cbl/COADM01C.cbl:146:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-ADMIN-OPT-PGMNAME(WS-OPTION"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 169,
+          "path": "app/cbl/COADM01C.cbl",
+          "text": "               XCTL PROGRAM(CDEMO-TO-PROGRAM)                                   "
+        }
+      ],
+      "id": "navigation:app/cbl/COADM01C.cbl:169:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 280,
+          "path": "app/cbl/COADM01C.cbl",
+          "text": "           EXEC CICS RETURN                                                     "
+        }
+      ],
+      "id": "navigation:app/cbl/COADM01C.cbl:280:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 146,
+          "path": "app/cbl/COBIL00C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/cbl/COBIL00C.cbl:146:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 282,
+          "path": "app/cbl/COBIL00C.cbl",
+          "text": "               XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/cbl/COBIL00C.cbl:282:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 402,
+          "path": "app/cbl/COCRDLIC.cbl",
+          "text": "              EXEC CICS XCTL                                                    "
+        }
+      ],
+      "id": "navigation:app/cbl/COCRDLIC.cbl:402:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "LIT-MENUPGM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 538,
+          "path": "app/cbl/COCRDLIC.cbl",
+          "text": "                   EXEC CICS XCTL                                               "
+        }
+      ],
+      "id": "navigation:app/cbl/COCRDLIC.cbl:538:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CCARD-NEXT-PROG"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 566,
+          "path": "app/cbl/COCRDLIC.cbl",
+          "text": "                   EXEC CICS XCTL                                               "
+        }
+      ],
+      "id": "navigation:app/cbl/COCRDLIC.cbl:566:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CCARD-NEXT-PROG"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 615,
+          "path": "app/cbl/COCRDLIC.cbl",
+          "text": "           EXEC CICS RETURN                                                     "
+        }
+      ],
+      "id": "navigation:app/cbl/COCRDLIC.cbl:615:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "LIT-THISTRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 331,
+          "path": "app/cbl/COCRDSLC.cbl",
+          "text": "                   EXEC CICS XCTL                                               "
+        }
+      ],
+      "id": "navigation:app/cbl/COCRDSLC.cbl:331:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 402,
+          "path": "app/cbl/COCRDSLC.cbl",
+          "text": "           EXEC CICS RETURN                                                     "
+        }
+      ],
+      "id": "navigation:app/cbl/COCRDSLC.cbl:402:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "LIT-THISTRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 473,
+          "path": "app/cbl/COCRDUPC.cbl",
+          "text": "                   EXEC CICS XCTL                                               "
+        }
+      ],
+      "id": "navigation:app/cbl/COCRDUPC.cbl:473:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 554,
+          "path": "app/cbl/COCRDUPC.cbl",
+          "text": "           EXEC CICS RETURN                                                     "
+        }
+      ],
+      "id": "navigation:app/cbl/COCRDUPC.cbl:554:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "LIT-THISTRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 107,
+          "path": "app/cbl/COMEN01C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/cbl/COMEN01C.cbl:107:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 156,
+          "path": "app/cbl/COMEN01C.cbl",
+          "text": "                      EXEC CICS XCTL"
+        }
+      ],
+      "id": "navigation:app/cbl/COMEN01C.cbl:156:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-MENU-OPT-PGMNAME(WS-OPTION"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 185,
+          "path": "app/cbl/COMEN01C.cbl",
+          "text": "                         XCTL PROGRAM(CDEMO-MENU-OPT-PGMNAME(WS-OPTION))"
+        }
+      ],
+      "id": "navigation:app/cbl/COMEN01C.cbl:185:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-MENU-OPT-PGMNAME(WS-OPTION"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 202,
+          "path": "app/cbl/COMEN01C.cbl",
+          "text": "               XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/cbl/COMEN01C.cbl:202:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 199,
+          "path": "app/cbl/CORPT00C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/cbl/CORPT00C.cbl:199:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 549,
+          "path": "app/cbl/CORPT00C.cbl",
+          "text": "               XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/cbl/CORPT00C.cbl:549:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 587,
+          "path": "app/cbl/CORPT00C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/cbl/CORPT00C.cbl:587:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 98,
+          "path": "app/cbl/COSGN00C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/cbl/COSGN00C.cbl:98:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 138,
+          "path": "app/cbl/COTRN00C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/cbl/COTRN00C.cbl:138:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 193,
+          "path": "app/cbl/COTRN00C.cbl",
+          "text": "                            XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/cbl/COTRN00C.cbl:193:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 519,
+          "path": "app/cbl/COTRN00C.cbl",
+          "text": "               XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/cbl/COTRN00C.cbl:519:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 136,
+          "path": "app/cbl/COTRN01C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/cbl/COTRN01C.cbl:136:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 206,
+          "path": "app/cbl/COTRN01C.cbl",
+          "text": "               XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/cbl/COTRN01C.cbl:206:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 156,
+          "path": "app/cbl/COTRN02C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/cbl/COTRN02C.cbl:156:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 509,
+          "path": "app/cbl/COTRN02C.cbl",
+          "text": "               XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/cbl/COTRN02C.cbl:509:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 530,
+          "path": "app/cbl/COTRN02C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/cbl/COTRN02C.cbl:530:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 141,
+          "path": "app/cbl/COUSR00C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/cbl/COUSR00C.cbl:141:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 197,
+          "path": "app/cbl/COUSR00C.cbl",
+          "text": "                            XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/cbl/COUSR00C.cbl:197:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 207,
+          "path": "app/cbl/COUSR00C.cbl",
+          "text": "                            XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/cbl/COUSR00C.cbl:207:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 515,
+          "path": "app/cbl/COUSR00C.cbl",
+          "text": "               XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/cbl/COUSR00C.cbl:515:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 107,
+          "path": "app/cbl/COUSR01C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/cbl/COUSR01C.cbl:107:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 176,
+          "path": "app/cbl/COUSR01C.cbl",
+          "text": "               XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/cbl/COUSR01C.cbl:176:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 135,
+          "path": "app/cbl/COUSR02C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/cbl/COUSR02C.cbl:135:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 259,
+          "path": "app/cbl/COUSR02C.cbl",
+          "text": "               XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/cbl/COUSR02C.cbl:259:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 134,
+          "path": "app/cbl/COUSR03C.cbl",
+          "text": "           EXEC CICS RETURN"
+        }
+      ],
+      "id": "navigation:app/cbl/COUSR03C.cbl:134:RETURN",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "WS-TRANID"
+    },
+    {
+      "blocking_for": [
+        "navigation-equivalence",
+        "cutover-approval"
+      ],
+      "decision": "Capture executed target values and approve navigation acceptance fixtures before implementing dynamic dispatch.",
+      "evidence": [
+        {
+          "line": 206,
+          "path": "app/cbl/COUSR03C.cbl",
+          "text": "               XCTL PROGRAM(CDEMO-TO-PROGRAM)"
+        }
+      ],
+      "id": "navigation:app/cbl/COUSR03C.cbl:206:XCTL",
+      "impact": "Static navigation expression is known, but its executed target and journey coverage are not verified.",
+      "kind": "unresolved-dynamic-target",
+      "operator_evidence_needed": "Supply sanitized screen journeys, transaction IDs, COMMAREA and executed navigation target values, including empty/error/return paths.",
+      "owner": "operator",
+      "proposed_disposition": "compatibility-adapter-pending-evidence",
+      "resource": "CDEMO-TO-PROGRAM"
+    }
+  ],
   "source_sha": "59cc6c2fd7ebd7ef7925cad552a01a4b8b6e4d5e"
 }

@@ -111,7 +111,8 @@ def parse_defines(path, text):
 
 
 def generate():
-    overlay = json.loads((SCOPE / 'dispositions.json').read_text())['rules']
+    dispositions = json.loads((SCOPE / 'dispositions.json').read_text())
+    overlay = dispositions['rules']
     entries, jobs, definitions = [], [], []
     contents = {}
     for path, sha in sorted(tracked().items()):
@@ -180,19 +181,28 @@ def generate():
                           'not_scheduled_core_jcl': sorted({Path(j['path']).stem.upper() for j in jobs if j['path'].startswith('app/jcl/')}-resolved_members),
                           'script_references': [{'path': p, 'jobs': sorted(n for n in names if n in t)} for p, t in contents.items() if p.startswith('scripts/') and any(n in t for n in names)]})
     external = external_dependencies(entries, contents)
+    gaps = list(dispositions['source_gaps'])
+    for edge in navigation:
+        if edge['binding'] == 'data-item':
+            gaps.append(dict(dispositions['dynamic_navigation_policy'],
+                             id=f"navigation:{edge['source']}:{edge['line']}:{edge['operation']}",
+                             resource=edge['value'], evidence=edge['evidence']))
     return {'schema_version': '1.0.0', 'source_sha': SOURCE_SHA, 'entries': entries,
             'cics': {'resources': csd, 'navigation': navigation, 'bms_definitions': bms},
             'datasets': {'definitions': definitions, 'dd_lineage': [dd for j in jobs for dd in j['dds']],
                          'cics_file_mapping': [r for r in csd if r['type'] == 'file']},
             'batch': {'jobs': jobs, 'scheduler_reconciliation': scheduled},
             'external_dependencies': external,
+            'source_gaps': sorted(gaps, key=lambda gap: gap['id']),
             'operator_evidence_requests': operator_requests(entries, jobs),
             'decisions_needed': [{'id': k, 'owner': 'manager/human-decision', 'impact': v} for k, v in {
                 'scheduler': 'Choose actual scheduler and approve missing-member reconciliation; do not implement absent jobs.',
                 'security': 'Approve Spring identity/RBAC replacement and privileged admin journeys.',
                 'dataset-contracts': 'Approve PostgreSQL keys, decimal/date encoding and restart/idempotency contracts.',
                 'report-delivery': 'Choose replacement for TDQ/internal-reader, FTP and TXT2PDF; preserve report acceptance fixtures.',
-                'scope-freeze': 'Approve proposed module ownership and disposition overlay before migration.'}.items()]}
+                'scope-freeze': 'Approve proposed module ownership and disposition overlay before migration.'}.items()] +
+                [{'id': gap['id'], 'owner': gap['owner'], 'impact': gap['impact'], 'decision': gap['decision']}
+                 for gap in dispositions['source_gaps']]}
 
 
 def external_dependencies(entries, contents):

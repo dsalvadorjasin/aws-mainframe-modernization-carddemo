@@ -45,7 +45,7 @@ class IntegrityTests(unittest.TestCase):
 
     def test_manifest(self):
         failures = {name for name, ok in check_manifest.validate(self.manifest) if not ok}
-        self.assertEqual(failures, {'CSD program/mapset resources resolve to inventoried implementation'})
+        self.assertEqual(failures, set())
         self.assertEqual(check_manifest.source_gaps(self.manifest), ['COCRDSEC'])
         ca7 = self.manifest['batch']['scheduler_reconciliation'][0]
         self.assertEqual(ca7['job_to_member']['CLOSEFIL1'], 'CLOSEFIL')
@@ -90,6 +90,25 @@ class IntegrityTests(unittest.TestCase):
         m = copy.deepcopy(self.manifest)
         m['entries'][0]['dependencies'].append({'type': 'navigation', 'binding': 'literal', 'operation': 'XCTL', 'value': 'ABSENT'})
         self.assertFalse(dict(check_manifest.validate(m))['literal XCTL/LINK/RETURN targets resolve'])
+
+    def test_unregistered_csd_resource(self):
+        m = copy.deepcopy(self.manifest)
+        m['cics']['resources'].append({'type': 'program', 'name': 'ABSENT'})
+        self.assertFalse(dict(check_manifest.validate(m))['unresolved CSD resources explicitly registered with evidence and decision'])
+
+    def test_gap_without_owner_or_decision(self):
+        for field in ('owner', 'decision', 'evidence'):
+            with self.subTest(field=field):
+                m = copy.deepcopy(self.manifest)
+                gap = next(g for g in m['source_gaps'] if g['kind'] == 'missing-source')
+                del gap[field]
+                self.assertFalse(dict(check_manifest.validate(m))['unresolved CSD resources explicitly registered with evidence and decision'])
+
+    def test_unregistered_dynamic_target(self):
+        m = copy.deepcopy(self.manifest)
+        gap = next(g for g in m['source_gaps'] if g['kind'] == 'unresolved-dynamic-target')
+        m['source_gaps'].remove(gap)
+        self.assertFalse(dict(check_manifest.validate(m))['source gap register and dynamic navigation accounting match curated policy'])
 
 
 if __name__ == '__main__':

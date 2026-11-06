@@ -54,7 +54,17 @@ def validate(manifest, freshness=True):
     # Reconcile against independently re-parsed source, not a permissive allow-list.
     expected = inventory.generate()
     check('CSD and navigation faithfully reconcile (source gaps reported)', manifest['cics'] == expected['cics'])
-    check('CSD program/mapset resources resolve to inventoried implementation', not source_gaps(manifest))
+    gaps = manifest.get('source_gaps', [])
+    required = ('id', 'resource', 'kind', 'proposed_disposition', 'owner', 'evidence', 'decision', 'impact', 'operator_evidence_needed', 'blocking_for')
+    check('source gaps have unique IDs, ownership, evidence and pending decisions',
+          len({g.get('id') for g in gaps}) == len(gaps) and all(all(g.get(k) for k in required) for g in gaps))
+    registered_csd = [g['resource'] for g in gaps if g.get('kind') == 'missing-source']
+    check('unresolved CSD resources explicitly registered with evidence and decision',
+          sorted(registered_csd) == sorted(source_gaps(manifest)) and
+          all(g.get('owner') and g.get('decision') and g.get('evidence') and
+              all(ev.get('path') == 'app/csd/CARDDEMO.CSD' for ev in g['evidence'])
+              for g in gaps if g.get('kind') == 'missing-source'))
+    check('source gap register and dynamic navigation accounting match curated policy', gaps == expected['source_gaps'])
     check('scheduler jobs have JCL members', not any(s['missing_members'] for s in manifest['batch']['scheduler_reconciliation']))
     check('scheduler missing/unscheduled members faithfully reconcile', manifest['batch']['scheduler_reconciliation'] == expected['batch']['scheduler_reconciliation'])
     check('approved scope retained and optional extensions excluded', all(
@@ -79,8 +89,8 @@ def main():
     results = validate(manifest)
     for name, ok in results:
         print(('PASS' if ok else 'FAIL') + ' ' + name)
-    print('SOURCE GAP unresolved CSD resources: ' + ', '.join(source_gaps(manifest)))
-    print('SOURCE GAP dynamic navigation requires operator captures; scheduler missing members are recorded, not supplied.')
+    print('REGISTERED SOURCE GAP pending decision: ' + ', '.join(source_gaps(manifest)))
+    print('REGISTERED RUNTIME GAPS dynamic navigation targets: ' + str(sum(g['kind'] == 'unresolved-dynamic-target' for g in manifest['source_gaps'])))
     return int(not all(ok for _, ok in results))
 
 

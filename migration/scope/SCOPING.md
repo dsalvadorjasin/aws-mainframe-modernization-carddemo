@@ -17,6 +17,12 @@ sample artifacts mentioning these technologies are retained as compatibility
 provenance, not permission to migrate the extensions.
 
 `dispositions.json` is the hand-curated, ordered, last-match-wins scope overlay.
+Its explicit `source_gaps` register records missing source separately from file
+dispositions, with evidence, ownership, impact, proposed disposition, a pending
+decision, operator request and blocking steps. COCRDSEC/CDV1 is proposed
+`excluded-pending-decision`, not silently or finally excluded. The curated
+`dynamic_navigation_policy` also expands into a manifest gap per dynamic edge,
+each with its own source citation and ID. No unresolved navigation is merely logged.
 `migrated` means planned migration, never completed migration. No member is
 classified `unused-with-evidence`: even `UNUSED1Y.cpy` is not declared unused just
 because of its name. Any later unused classification needs a reproducible search
@@ -146,10 +152,14 @@ semantics; catalog definitions alone are not a relational design.
 
 ### Findings and ambiguities
 
-* **Missing implementation:** CSD defines PROGRAM(COCRDSEC) and a transaction
-  points to it, but no matching source program is inventoried. Do not invent its
-  behavior or substitute COCRDSLC. Operator/manager must supply it or approve an
-  explicit resource removal/boundary change in a later ticket.
+* **Registered missing implementation:** CSD defines PROGRAM(COCRDSEC) at line
+  211. CDV1 at lines 388–390 is labelled `DEVELOPER TRANSACTION - 1` and points
+  to it, but no matching source program is inventoried. It is not part of approved
+  user journeys. Register `csd-cdv1-cocrdsec` proposes `excluded-pending-decision`,
+  owned by manager/human-decision. The operator must confirm whether a COCRDSEC
+  load module exists on the host and whether CDV1 is used; supply source or approve
+  exclusion. Do not invent behavior or substitute COCRDSLC. This remains a decision
+  needed and blocks developer-transaction scope approval and cutover approval.
 * **Scheduler aliases:** CA7 explicitly lists CLOSEFIL as the member for both
   CLOSEFIL1 and CLOSEFIL2. Member resolution is verified from the listing; deployed
   scheduler overrides, activation and per-job parameters remain unverified.
@@ -271,12 +281,15 @@ python3 -m unittest discover -s migration/scope/tests -v
 git diff --stat origin/main --diff-filter=MD
 ```
 
-**Known source-consistency failures are intentional findings, not waived passes:**
-the strict checker returns nonzero for missing CSD implementation COCRDSEC.
+**Green inventory CI does not mean missing source has been supplied:** every
+unresolved CSD program/mapset must have an explicit registered gap with owner,
+exact evidence and a pending decision; an unregistered resource fails the gate.
+Registered gaps remain visible in check output and the manifest. Register structure,
+unique IDs, curated policy fidelity and per-edge dynamic navigation coverage are
+also checked. COCRDSEC/CDV1 remains a human decision, not an approved exclusion.
 CA7 aliases are resolved from the member column, not guessed from names.
-CI runs the same strict gate; it cannot go green until
-humans resolve the missing artifacts or approve an explicit future scope change.
-Unit tests assert these baseline findings and independently test corruption,
+Unit tests assert gap accounting and independently test unregistered CSD resources,
+missing owner/evidence/decision, unregistered dynamic targets, corruption,
 unresolved COPY/PGM/PROC, duplicate coverage, citation and scope tampering. A passing
 unit suite does not mean the original source is complete or runtime-equivalent.
 
