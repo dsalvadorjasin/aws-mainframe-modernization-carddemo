@@ -256,7 +256,7 @@ def generate():
                 'report-delivery': ('Choose replacement for TDQ/internal-reader, FTP and TXT2PDF in architecture and online/batch reporting; preserve golden report fixtures.', blocking('architecture', 'goldens', 'online', 'batch')),
                 'scope-freeze': ('Approve proposed module ownership and boundary before capture protocol and target architecture.', blocking('protocol', 'architecture'))}.items()] +
                 [{'id': gap['id'], 'owner': gap['owner'], 'impact': gap['impact'], 'decision': gap['decision'], 'blocking_for': gap['blocking_for']}
-                 for gap in dispositions['source_gaps']]}
+                 for gap in dispositions['source_gaps'] if gap.get('decision_status') != 'approved']}
 
 
 def external_dependencies(entries, contents, pgm_allowlist):

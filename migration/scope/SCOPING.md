@@ -18,9 +18,15 @@ provenance, not permission to migrate the extensions.
 
 `dispositions.json` is the hand-curated, ordered, last-match-wins scope overlay.
 Its explicit `source_gaps` register records missing source separately from file
-dispositions, with evidence, ownership, impact, proposed disposition, a pending
-decision, operator request and blocking steps. COCRDSEC/CDV1 is proposed
-`excluded-pending-decision`, not silently or finally excluded. The curated
+dispositions, with evidence, ownership, impact and recorded decisions. Unresolved
+navigation findings retain operator requests and applicable blocking steps.
+COCRDSEC/CDV1 is an **approved exclusion** (`disposition=excluded`), owned by
+manager/human-decision: **d-missing-card-search=exclude-missing-registration,
+selected by David in Plan view, plan revision 28**. It is outside migration scope,
+original-capture requirements and capture/parity denominators, blocks no step,
+and is never counted as parity-passed. Its parity status is excluded/not evaluated.
+This does **not** establish that the host load module or registration is absent
+or obsolete. No placeholder implementation is introduced. The curated
 `dynamic_navigation_policy` expands into a manifest gap only for runtime-dependent
 edges, each with its own source citation, reason and ID. Resolved data-item edges
 retain their literal and assignment provenance in the navigation graph instead.
@@ -159,12 +165,12 @@ semantics; catalog definitions alone are not a relational design.
 * **Registered missing implementation:** CSD defines PROGRAM(COCRDSEC) at line
   211. CDV1 at lines 388–390 is labelled `DEVELOPER TRANSACTION - 1` and points
   to it, but no matching source program is inventoried. It is not part of approved
-  user journeys. Register `csd-cdv1-cocrdsec` proposes `excluded-pending-decision`,
-  owned by manager/human-decision. The operator must confirm whether a COCRDSEC
-  load module exists on the host and whether CDV1 is used; supply source or approve
-  exclusion. Do not invent behavior or substitute COCRDSLC. This remains a decision
-  needed to settle the capture-protocol boundary and target architecture; its
-  proposed exclusion and pending human decision are unchanged.
+  user journeys. Register `csd-cdv1-cocrdsec` records the approved exclusion and
+  David's plan-revision-28 decision above, owned by manager/human-decision.
+  It has no blocker or operator capture request and is excluded from capture and
+  parity denominators, never parity-passed. Host absence or obsolescence is not
+  established. Do not invent behavior or substitute COCRDSLC. All other core card
+  journeys, including COCRDLIC, COCRDSLC and COCRDUPC, remain in scope unchanged.
 * **Scheduler aliases:** CA7 explicitly lists CLOSEFIL as the member for both
   CLOSEFIL1 and CLOSEFIL2. Member resolution is verified from the listing; deployed
   scheduler overrides, activation and per-job parameters remain unverified.
@@ -188,7 +194,7 @@ All 55 variable-target edges are classified, including excluded extensions (whic
 remain excluded). All current literal-proven candidate targets resolve to an
 inventoried program or a transaction in an inventoried CSD. No additional missing
 candidate implementation was found. Only the 19 runtime-dependent edges remain
-operator-evidence gaps; COCRDSEC/CDV1 remains the separate missing-source decision.
+operator-evidence gaps; COCRDSEC/CDV1 remains the separate approved missing-source exclusion.
 
 The resolver expands core COPY contracts with original file/line provenance;
 tracks quoted VALUE clauses, direct MOVE literals, aliases and group overwrites;
@@ -329,7 +335,6 @@ Stable plan references used throughout the manifest and requests:
 
 | Input / owner | Why source does not settle it | Dependent plan step and impact |
 |---|---|---|
-| COCRDSEC host load/source provenance and CDV1 usage; operator supplies, manager decides | Developer CSD entry has no source; exclusion is only proposed, not approved | s1.2/UNT-2: settle capture-protocol boundary; s2.1/UNT-4: settle developer-transaction architecture boundary without inventing implementation |
 | **15 core** runtime target/COMMAREA requests; operator | Incoming public transaction COMMAREA is not a closed literal set | s1.2/UNT-2: capture protocol and initial values; s1.3/UNT-3: golden navigation corpus; s4.1-s4.4/UNT-10..UNT-13: safe dispatch and online acceptance; s6.1/UNT-18: qualification consumes goldens |
 | **Four conditional** runtime requests (two authorization, two transaction-type); operator only if rescoped | Source files are excluded; no approved-core runtime evidence is required for them | No approved-core blocker (`blocking_for=[]`); requests activate only after an explicit rescoping decision |
 | Screen inputs/outputs and validation/empty/error journeys for approved programs; operator | Finite source candidates do not prove executed branches or screen behavior | s1.2/UNT-2: initial screen capture protocol; s1.3/UNT-3: golden screens; s4.1-s4.4/UNT-10..UNT-13: online journey coverage; s6.1/UNT-18: qualification consumes goldens |
@@ -371,8 +376,9 @@ The manifest has precise per-core-screen and per-core-JCL requests, owned by
 4. TDQ JOBS routing, generated report JCL, internal-reader/JES submission spool,
    report/date parameters, FTP destinations/redacted credentials and TXT2PDF output.
 5. RACF profiles/permissions (redacted), scheduler product actually in use, active
-   calendars/dependencies, CLOSEFIL1/2 runtime overrides and COCRDSEC load/source
-   provenance. Never infer production use from sample scheduler dates or ZIP files.
+   calendars/dependencies and CLOSEFIL1/2 runtime overrides. Never infer production
+   use from sample scheduler dates or ZIP files. The approved CDV1/COCRDSEC exclusion
+   requires no original capture or host-provenance request.
 
 ## External dependencies, ownership and impact
 
@@ -422,8 +428,9 @@ are conditional on rescoping and block no approved-core step.
 Manager/human-decision owns: (1) actual scheduler and job/override activation;
 (2) identity provider/RBAC and privileged admin acceptance; (3) PostgreSQL keys,
 decimal/date/record compatibility and restart/idempotency policy; (4) report,
-transport and job-submission replacements; (5) scope/module/ownership approval and
-COCRDSEC disposition. No implicit scope expansion to optional extensions.
+transport and job-submission replacements; (5) scope/module/ownership approval.
+CDV1/COCRDSEC's exclusion decision is made (David, Plan view, revision 28), not an
+outstanding decision. No implicit scope expansion to optional extensions.
 
 ## Transfer notes
 
@@ -467,10 +474,13 @@ git diff --stat origin/main --diff-filter=MD
 
 **Green inventory CI does not mean missing source has been supplied:** every
 unresolved CSD program/mapset must have an explicit registered gap with owner,
-exact evidence and a pending decision; an unregistered resource fails the gate.
+exact evidence and a recorded decision; an unregistered resource fails the gate.
 Registered gaps remain visible in check output and the manifest. Register structure,
 unique IDs, curated policy fidelity and per-edge dynamic navigation coverage are
-also checked. COCRDSEC/CDV1 remains a human decision, not an approved exclusion.
+also checked. COCRDSEC/CDV1's approved exclusion is checked as nonblocking and
+outside original-capture requirements and capture/parity denominators, never
+parity-passed. Its repository-absence searches are still re-run; host absence or
+obsolescence is not established. The curated external PGM allowlist remains enforced.
 CA7 aliases are resolved from the member column, not guessed from names.
 Unit tests assert gap accounting and independently test unregistered CSD resources,
 missing owner/evidence/decision, unregistered dynamic targets, corruption,

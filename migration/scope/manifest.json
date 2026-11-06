@@ -42874,16 +42874,6 @@
       "id": "scope-freeze",
       "impact": "Approve proposed module ownership and boundary before capture protocol and target architecture.",
       "owner": "manager/human-decision"
-    },
-    {
-      "blocking_for": [
-        "s1.2/UNT-2",
-        "s2.1/UNT-4"
-      ],
-      "decision": "Confirm source availability or approve exclusion of developer transaction CDV1/COCRDSEC; it is not part of approved user journeys. No exclusion is approved by this register.",
-      "id": "csd-cdv1-cocrdsec",
-      "impact": "No repository implementation exists for this CSD developer transaction; do not invent behavior or expand approved user journeys.",
-      "owner": "manager/human-decision"
     }
   ],
   "entries": [
@@ -70622,11 +70612,10 @@
           "stdout": ""
         }
       ],
-      "blocking_for": [
-        "s1.2/UNT-2",
-        "s2.1/UNT-4"
-      ],
-      "decision": "Confirm source availability or approve exclusion of developer transaction CDV1/COCRDSEC; it is not part of approved user journeys. No exclusion is approved by this register.",
+      "blocking_for": [],
+      "decision": "d-missing-card-search=exclude-missing-registration, selected by David in Plan view, plan revision 28",
+      "decision_status": "approved",
+      "disposition": "excluded",
       "evidence": [
         {
           "line": 211,
@@ -70650,11 +70639,16 @@
         }
       ],
       "id": "csd-cdv1-cocrdsec",
-      "impact": "No repository implementation exists for this CSD developer transaction; do not invent behavior or expand approved user journeys.",
+      "impact": "CDV1/COCRDSEC is an approved exclusion from migration scope, original-capture requirements and parity denominators; never count it as parity-passed. Other core card journeys remain in scope. No placeholder implementation.",
       "kind": "missing-source",
-      "operator_evidence_needed": "confirm whether a COCRDSEC load module exists on the host and whether CDV1 is used; supply source or approve exclusion",
+      "limitations": "Repository source absence and this scope decision do not establish that the host load module or registration is absent or obsolete.",
+      "migration_in_scope": false,
+      "original_capture_in_denominator": false,
+      "original_capture_required": false,
       "owner": "manager/human-decision",
-      "proposed_disposition": "excluded-pending-decision",
+      "parity_in_denominator": false,
+      "parity_passed": false,
+      "parity_status": "excluded-not-evaluated",
       "resource": "COCRDSEC",
       "transaction": "CDV1"
     },

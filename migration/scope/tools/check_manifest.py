@@ -76,9 +76,24 @@ def validate(manifest, freshness=True):
         c['target'] in (all_transactions if e['operation'] == 'RETURN' else programs)
         for c in e['resolution']['candidates']) for e in dynamic if e['resolution']['classification'] == 'statically-resolved'))
     gaps = manifest.get('source_gaps', [])
-    required = ('id', 'resource', 'kind', 'proposed_disposition', 'owner', 'evidence', 'decision', 'impact', 'operator_evidence_needed')
-    check('source gaps have unique IDs, ownership, evidence and pending decisions',
-          len({g.get('id') for g in gaps}) == len(gaps) and all(all(g.get(k) for k in required) and isinstance(g.get('blocking_for'), list) for g in gaps))
+    required = ('id', 'resource', 'kind', 'owner', 'evidence', 'decision', 'impact')
+    check('source gaps have unique IDs, ownership, evidence and recorded decisions',
+          len({g.get('id') for g in gaps}) == len(gaps) and all(all(g.get(k) for k in required) and isinstance(g.get('blocking_for'), list) and
+          (g.get('decision_status') == 'approved' or (g.get('proposed_disposition') and g.get('operator_evidence_needed'))) for g in gaps))
+    card_search = [g for g in gaps if g.get('resource') == 'COCRDSEC']
+    approved_exclusion = {
+        'id': 'csd-cdv1-cocrdsec', 'resource': 'COCRDSEC', 'transaction': 'CDV1',
+        'kind': 'missing-source', 'disposition': 'excluded', 'decision_status': 'approved',
+        'owner': 'manager/human-decision',
+        'decision': 'd-missing-card-search=exclude-missing-registration, selected by David in Plan view, plan revision 28',
+        'migration_in_scope': False, 'original_capture_required': False,
+        'original_capture_in_denominator': False, 'parity_in_denominator': False,
+        'parity_passed': False, 'parity_status': 'excluded-not-evaluated', 'blocking_for': []}
+    excluded = len(card_search) == 1 and all(card_search[0].get(k) == v for k, v in approved_exclusion.items())
+    excluded &= all('operator_evidence_needed' not in g and 'proposed_disposition' not in g for g in card_search)
+    excluded &= not any(resource in json.dumps(manifest['operator_evidence_requests'] + manifest['decisions_needed']).upper()
+                        for resource in ('COCRDSEC', 'CDV1', 'CSD-CDV1-COCRDSEC'))
+    check('CDV1/COCRDSEC approved exclusion is nonblocking, outside captures and never parity-passed', excluded)
     registered_csd = [g['resource'] for g in gaps if g.get('kind') == 'missing-source']
     check('unresolved CSD resources explicitly registered with evidence and decision',
           sorted(registered_csd) == sorted(source_gaps(manifest)) and
@@ -126,7 +141,7 @@ def validate(manifest, freshness=True):
     check('scheduler missing/unscheduled members faithfully reconcile', manifest['batch']['scheduler_reconciliation'] == expected['batch']['scheduler_reconciliation'])
     check('approved scope retained and optional extensions excluded', all(
         e['disposition'] == 'excluded' if e['path'].startswith(('app/app-authorization-ims-db2-mq/', 'app/app-transaction-type-db2/', 'app/app-vsam-mq/'))
-        else e['disposition'] != 'excluded' if Path(e['path']).stem.upper() in {'CBEXPORT', 'CBIMPORT', 'CORPT00C', 'COADM01C', 'COUSR00C', 'COUSR01C', 'COUSR02C', 'COUSR03C'} else True for e in entries))
+        else e['disposition'] != 'excluded' if Path(e['path']).stem.upper() in {'CBEXPORT', 'CBIMPORT', 'CORPT00C', 'COADM01C', 'COUSR00C', 'COUSR01C', 'COUSR02C', 'COUSR03C', 'COCRDLIC', 'COCRDSLC', 'COCRDUPC'} else True for e in entries))
     check('no unsupported unused declarations', all(e['disposition'] != 'unused-with-evidence' for e in entries))
     if freshness:
         check('deterministic regeneration equals committed manifest', manifest == expected)
@@ -146,7 +161,7 @@ def main():
     results = validate(manifest)
     for name, ok in results:
         print(('PASS' if ok else 'FAIL') + ' ' + name)
-    print('REGISTERED SOURCE GAP pending decision: ' + ', '.join(source_gaps(manifest)))
+    print('REGISTERED SOURCE GAP approved exclusion: ' + ', '.join(g['resource'] for g in manifest['source_gaps'] if g.get('disposition') == 'excluded' and g.get('decision_status') == 'approved'))
     print('REGISTERED RUNTIME GAPS dynamic navigation targets: ' + str(sum(g['kind'] == 'unresolved-dynamic-target' for g in manifest['source_gaps'])))
     print('RUNTIME NAVIGATION SCOPE core: ' + str(sum(g.get('kind') == 'unresolved-dynamic-target' and g.get('scope_class') == 'core' for g in manifest['source_gaps'])) +
           '; conditional-on-rescoping: ' + str(sum(g.get('kind') == 'unresolved-dynamic-target' and g.get('scope_class') == 'conditional-on-rescoping' for g in manifest['source_gaps'])))

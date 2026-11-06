@@ -53,6 +53,12 @@ class IntegrityTests(unittest.TestCase):
         failures = {name for name, ok in check_manifest.validate(self.manifest) if not ok}
         self.assertEqual(failures, set())
         self.assertEqual(check_manifest.source_gaps(self.manifest), ['COCRDSEC'])
+        gap = next(g for g in self.manifest['source_gaps'] if g['resource'] == 'COCRDSEC')
+        self.assertEqual(gap['disposition'], 'excluded')
+        self.assertEqual(gap['decision_status'], 'approved')
+        self.assertEqual(gap['blocking_for'], [])
+        self.assertFalse(gap['parity_in_denominator'])
+        self.assertFalse(gap['parity_passed'])
         ca7 = self.manifest['batch']['scheduler_reconciliation'][0]
         self.assertEqual(ca7['job_to_member']['CLOSEFIL1'], 'CLOSEFIL')
         self.assertEqual(ca7['job_to_member']['CLOSEFIL2'], 'CLOSEFIL')
@@ -134,6 +140,26 @@ class IntegrityTests(unittest.TestCase):
         gap = next(g for g in m['source_gaps'] if g['kind'] == 'unresolved-dynamic-target')
         m['source_gaps'].remove(gap)
         self.assertFalse(dict(check_manifest.validate(m))['source gap register and dynamic navigation accounting match curated policy'])
+
+    def test_approved_card_search_exclusion_tamper(self):
+        changes = (
+            ('decision_status', 'pending'), ('decision', 'pending human decision'),
+            ('proposed_disposition', 'excluded-pending-decision'),
+            ('parity_status', 'parity-passed'), ('parity_passed', True),
+            ('blocking_for', inventory.blocking('protocol')),
+            ('original_capture_required', True), ('original_capture_in_denominator', True),
+            ('parity_in_denominator', True), ('migration_in_scope', True))
+        for field, value in changes:
+            with self.subTest(field=field):
+                m = copy.deepcopy(self.manifest)
+                gap = next(g for g in m['source_gaps'] if g['resource'] == 'COCRDSEC')
+                gap[field] = value
+                self.assertFalse(dict(check_manifest.validate(m, freshness=False))['CDV1/COCRDSEC approved exclusion is nonblocking, outside captures and never parity-passed'])
+
+    def test_approved_card_search_capture_request_tamper(self):
+        m = copy.deepcopy(self.manifest)
+        m['operator_evidence_requests'].append({'id': 'CDV1', 'ask': 'Capture COCRDSEC'})
+        self.assertFalse(dict(check_manifest.validate(m, freshness=False))['CDV1/COCRDSEC approved exclusion is nonblocking, outside captures and never parity-passed'])
 
     def test_tampered_resolved_candidate(self):
         m = copy.deepcopy(self.manifest)
