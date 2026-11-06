@@ -1,0 +1,15 @@
+name: Scope manifest
+on: [pull_request]
+jobs:
+  scope:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 migration/scope/tools/inventory.py --check
+      - run: python3 migration/scope/tools/check_manifest.py
+      - run: python3 -m unittest discover -s migration/scope/tests -v
